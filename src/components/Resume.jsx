@@ -25,6 +25,18 @@ export function Resume() {
               },
             ]}
           />
+          <Section
+            title="Education"
+            entries={[
+              {
+                title: "School or University",
+                subtitle: "Degree and Field",
+                location: "Location",
+                datePeriod: "Date Period",
+                bullets: [{}],
+              },
+            ]}
+          />
           <section className="resumeSection">
             <h2 className="sectionTitle">Education</h2>
             <hr></hr>

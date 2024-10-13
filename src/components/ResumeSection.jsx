@@ -1,5 +1,5 @@
 export default function ResumeSection({ title, entries }) {
-  console.log(entries[0].bullets[0].id);
+  console.log(entries[0].bullets[0]);
 
   return (
     <section className="resumeSection">
@@ -15,13 +15,16 @@ export default function ResumeSection({ title, entries }) {
           <span className="datePeriod">{entries[0].datePeriod}</span>
         </div>
       </div>
-      <ul>
-        {entries[0].bullets.map((bullet) => (
-          <li className="bulletPoint" key={bullet.id}>
-            {bullet.text}
-          </li>
-        ))}
-      </ul>
+      {/* To-do: turn bullets into components */}
+      {entries[0].bullets.length > 0 && (
+        <ul>
+          {entries[0].bullets.map((bullet) => (
+            <li className="bulletPoint" key={bullet.id}>
+              {bullet.text}
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }
