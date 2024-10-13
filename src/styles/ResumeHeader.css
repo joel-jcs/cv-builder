@@ -1,4 +1,5 @@
 header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +11,8 @@ header {
   margin: 0 auto;
 }
 
-header:hover {
+header:hover,
+header:focus-within {
   border-color: green;
 }
 
