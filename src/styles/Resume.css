@@ -18,20 +18,56 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+input:focus::placeholder {
+  opacity: 0.5;
+}
+
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 0.5rem;
+  width: 97.5%;
+  margin: 0 auto;
 }
 
-header h1 {
+header:hover {
+  border-color: green;
+}
+
+.name {
   font-size: 1.6rem;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .contactDetails {
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  width: 90%;
+}
+
+.contactDetails span {
+  padding: 0 5px;
+}
+
+.contactDetails input {
+  text-align: center;
+  max-width: 12ch;
+}
+
+.contactDetails input[type="email"],
+.contactDetails input[type="link"] {
+  max-width: 22ch;
 }
 
 section {
@@ -61,11 +97,11 @@ hr {
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
+  border-radius: 0.5rem;
 }
 
 .entry:hover {
   border-color: green;
-  border-radius: 0.5rem;
 }
 
 .entryHeader {
@@ -99,16 +135,6 @@ hr {
 
 .entryLocationDate span {
   font-size: 0.9rem;
-}
-
-input {
-  border: none;
-  outline: none;
-  background-color: transparent;
-}
-
-input:focus::placeholder {
-  opacity: 0.5;
 }
 
 .bulletSection {
