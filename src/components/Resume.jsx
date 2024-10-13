@@ -1,12 +1,27 @@
 import "../styles/Resume.css";
 import Header from "./ResumeHeader";
 import Section from "./ResumeSection";
+import Modal from "./Modal";
+import { useState } from "react";
 
 export function Resume() {
+  const [showModal, setShowModal] = useState(false);
+  function openModal() {
+    setShowModal(true);
+  }
+
+  function closeModal() {
+    setShowModal(false);
+  }
+
   return (
     <>
       <div className="resumePage">
-        <Header />
+        <Header
+          showModal={showModal}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
         <main>
           <Section
             title="Experience"
