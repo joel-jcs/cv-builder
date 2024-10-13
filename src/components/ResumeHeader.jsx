@@ -1,22 +1,71 @@
 /* eslint-disable react/prop-types */
-export default function ResumeHeader({
-  name = "John Smith",
-  email = "realjsmith@email.com",
-  phone = "555-555-5555",
-  link = "Link: LinkedIn or Portfolio",
-  location = "San Juan, PR",
-}) {
+import { useState } from "react";
+import Input from "./Input";
+
+export default function ResumeHeader() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [link, setLink] = useState("");
+  const [location, setLocation] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "name") setName(value);
+    if (name === "email") setEmail(value);
+    if (name === "phone") setPhone(value);
+    if (name === "link") setLink(value);
+    if (name === "location") setLocation(value);
+  };
+
+  const defaultName = "John Smith";
+  const defaultEmail = "realjsmith@email.com";
+  const defaultPhone = "555-555-5555";
+  const defaultLink = "Link: LinkedIn or Portfolio";
+  const defaultLocation = "San Juan, PR";
+
   return (
     <header>
-      <input type="text" className="name" placeholder={name} />
+      <Input
+        type={"text"}
+        name={"name"}
+        className={"name"}
+        placeholder={defaultName}
+        value={name}
+        onChange={handleChange}
+      />
       <div className="contactDetails">
-        <input type="email" placeholder={email} />
+        <Input
+          type={"email"}
+          name={"email"}
+          placeholder={defaultEmail}
+          value={email}
+          onChange={handleChange}
+        />
         <span className="bulletDivider">•</span>
-        <input type="phone" placeholder={phone} />
+        <Input
+          type={"tel"}
+          name={"phone"}
+          placeholder={defaultPhone}
+          value={phone}
+          onChange={handleChange}
+        />
         <span className="bulletDivider">•</span>
-        <input type="link" placeholder={link} />
+        <Input
+          type={"url"}
+          name={"link"}
+          placeholder={defaultLink}
+          value={link}
+          onChange={handleChange}
+        />
         <span className="bulletDivider">•</span>
-        <input type="text" placeholder={location} />
+        <Input
+          type={"text"}
+          name={"location"}
+          placeholder={defaultLocation}
+          value={location}
+          onChange={handleChange}
+        />
       </div>
     </header>
   );
