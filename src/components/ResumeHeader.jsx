@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
+import "../styles/ResumeHeader.css";
 import { useState } from "react";
 import Input from "./Input";
+import Modal from "./Modal";
 
-export default function ResumeHeader() {
+export default function ResumeHeader({ showModal, openModal, closeModal }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -25,7 +27,8 @@ export default function ResumeHeader() {
   const defaultLocation = "San Juan, PR";
 
   return (
-    <header>
+    <header onClick={openModal} onFocus={openModal} onBlur={closeModal}>
+      {showModal && <Modal />}
       <Input
         type={"text"}
         name={"name"}
