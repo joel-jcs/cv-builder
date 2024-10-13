@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import "../styles/ResumeSection.css";
 import BulletPoint from "./BulletPoint";
 
 export default function ResumeSection({
