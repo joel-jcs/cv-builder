@@ -1,5 +1,19 @@
-export default function ResumeSection({ title, entries }) {
-  console.log(entries[0].bullets[0]);
+/* eslint-disable react/prop-types */
+import BulletPoint from "./BulletPoint";
+
+export default function ResumeSection({
+  title,
+  entries = [
+    {
+      title: "",
+      subtitle: "",
+      location: "",
+      datePeriod: "",
+      hasBulletsSection: false,
+    },
+  ],
+}) {
+  console.log(entries[0]);
 
   return (
     <section className="resumeSection">
@@ -15,14 +29,13 @@ export default function ResumeSection({ title, entries }) {
           <span className="datePeriod">{entries[0].datePeriod}</span>
         </div>
       </div>
-      {/* To-do: turn bullets into components */}
-      {entries[0].bullets.length > 0 && (
+      {entries[0].hasBulletsSection && (
         <ul>
-          {entries[0].bullets.map((bullet) => (
-            <li className="bulletPoint" key={bullet.id}>
-              {bullet.text}
-            </li>
-          ))}
+          <BulletPoint
+            text="Highlight your accomplishments, starting with actions/verbs and using numbers where possible."
+            id={crypto.randomUUID()}
+          />
+          <BulletPoint text="You've got the power." id={crypto.randomUUID()} />
         </ul>
       )}
     </section>
