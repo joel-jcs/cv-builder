@@ -1,23 +1,13 @@
 import "../styles/Resume.css";
+import Header from "./ResumeHeader";
 
 export function Resume() {
   return (
     <>
       <div className="resumePage">
-        <header>
-          <h1>Your Name</h1>
-          <div className="contactDetails">
-            <span>Email</span>
-            <span className="bulletDivider">•</span>
-            <span>Phone</span>
-            <span className="bulletDivider">•</span>
-            <span>LinkedIn / Portfolio</span>
-            <span className="bulletDivider">•</span>
-            <span>Location</span>
-          </div>
-        </header>
+        <Header />
         <main>
-          <section>
+          <section className="resumeSection">
             <h2 className="sectionTitle">Experience</h2>
             <hr></hr>
             <div className="entry">
@@ -31,13 +21,13 @@ export function Resume() {
               </div>
             </div>
             <ul>
-              <li className="responsibility">
+              <li className="bulletPoint">
                 Highlight your accomplishments, starting with actions/verbs and
                 using numbers where possible.
               </li>
             </ul>
           </section>
-          <section>
+          <section className="resumeSection">
             <h2 className="sectionTitle">Education</h2>
             <hr></hr>
             <div className="entry">
@@ -51,7 +41,7 @@ export function Resume() {
               </div>
             </div>
           </section>
-          <section>
+          <section className="resumeSection">
             <h2 className="sectionTitle">Certifications</h2>
             <hr></hr>
             <div className="entry">
@@ -65,13 +55,13 @@ export function Resume() {
               </div>
             </div>
           </section>
-          <section>
+          <section className="resumeSection">
             <h2 className="sectionTitle">Skills</h2>
             <hr></hr>
             <ul>
-              <li className="skill">Skill 1</li>
-              <li className="skill">Skill 2</li>
-              <li className="skill">Skill 3</li>
+              <li className="bulletPoint">Skill 1</li>
+              <li className="bulletPoint">Skill 2</li>
+              <li className="bulletPoint">Skill 3</li>
             </ul>
           </section>
         </main>
