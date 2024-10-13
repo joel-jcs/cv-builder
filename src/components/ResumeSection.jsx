@@ -3,13 +3,13 @@ import BulletPoint from "./BulletPoint";
 
 export default function ResumeSection({
   title,
+  hasBulletsSection = false,
   entries = [
     {
       title: "",
       subtitle: "",
       location: "",
       datePeriod: "",
-      hasBulletsSection: false,
     },
   ],
 }) {
@@ -29,7 +29,7 @@ export default function ResumeSection({
           <span className="datePeriod">{entries[0].datePeriod}</span>
         </div>
       </div>
-      {entries[0].hasBulletsSection && (
+      {hasBulletsSection && (
         <ul>
           <BulletPoint
             text="Highlight your accomplishments, starting with actions/verbs and using numbers where possible."

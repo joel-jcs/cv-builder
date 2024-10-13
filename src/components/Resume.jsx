@@ -10,13 +10,13 @@ export function Resume() {
         <main>
           <Section
             title="Experience"
+            hasBulletsSection={true}
             entries={[
               {
                 title: "Company Name",
                 subtitle: "Position Title",
                 location: "Location",
                 datePeriod: "Date Period",
-                hasBulletsSection: true,
               },
             ]}
           />
@@ -42,14 +42,7 @@ export function Resume() {
               },
             ]}
           />
-          <Section
-            title="Skills"
-            entries={[
-              {
-                hasBulletsSection: true,
-              },
-            ]}
-          />
+          <Section title="Skills" hasBulletsSection={true} />
         </main>
       </div>
     </>
