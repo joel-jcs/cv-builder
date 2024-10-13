@@ -11,8 +11,6 @@
   height: 1164.71px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  gap: 20px;
   background-color: #181a1b;
   border: 1px solid #111111;
   padding: 20px;
@@ -39,13 +37,14 @@ section {
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 5px 10px;
+  padding: 10px;
 }
 
 .sectionTitle {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 hr {
@@ -53,7 +52,42 @@ hr {
   width: 100%;
 }
 
+.entry {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.entryPrimaryInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+.entryTitle {
+  font-size: 1.1rem;
+  font-weight: bolder;
+}
+
+.entrySubtitle {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.entryLocationDate {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+}
+
+.entryLocationDate span {
+  font-size: 0.9rem;
+}
+
 li {
   text-align: left;
   margin-left: 16px;
+  margin-top: 5px;
 }
