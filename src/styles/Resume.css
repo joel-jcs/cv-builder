@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.resumePage {
+  font-family: "Inter", sans-serif;
+  width: 900px;
+  height: 1164.71px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 20px;
+  background-color: #181a1b;
+  border: 1px solid #111111;
+  padding: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.contactDetails {
+  display: flex;
+  gap: 10px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 5px 10px;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+hr {
+  margin: 5px 0 10px 0;
+  width: 100%;
+}
+
+li {
+  text-align: left;
+  margin-left: 16px;
+}
