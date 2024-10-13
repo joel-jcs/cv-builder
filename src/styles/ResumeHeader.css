@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 0.5rem;
+  width: 97.5%;
+  margin: 0 auto;
+}
+
+header:hover {
+  border-color: green;
+}
+
+.name {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.contactDetails {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+}
+
+.contactDetails span {
+  padding: 0 5px;
+}
+
+.contactDetails input {
+  text-align: center;
+  max-width: 12ch;
+}
+
+.contactDetails input[type="email"],
+.contactDetails input[type="url"] {
+  max-width: 22ch;
+}
