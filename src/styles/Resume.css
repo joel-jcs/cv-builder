@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 16px;
+  transition: ease 0.1s;
 }
 
 .resumePage {
@@ -54,6 +55,21 @@ hr {
 
 .entry {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.entry:hover {
+  border-color: green;
+  border-radius: 0.5rem;
+}
+
+.entryHeader {
+  display: flex;
   justify-content: space-between;
   width: 100%;
 }
@@ -61,8 +77,7 @@ hr {
 .entryPrimaryInfo {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: start;
+  width: 70%;
 }
 
 .entryTitle {
@@ -86,8 +101,28 @@ hr {
   font-size: 0.9rem;
 }
 
-li {
-  text-align: left;
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+input:focus::placeholder {
+  opacity: 0.5;
+}
+
+.bulletSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bulletPoint {
   margin-left: 16px;
   margin-top: 5px;
+  width: 98%;
+}
+
+.bulletPoint input {
+  width: 100%;
 }

@@ -8,7 +8,7 @@ export default function BulletPoint({ text, id }) {
   if (bulletsArr.length > 0) {
     return bulletsArr.map((bullet) => (
       <li className="bulletPoint" key={bullet.id}>
-        {bullet.text}
+        <input placeholder={bullet.text} />
       </li>
     ));
   }

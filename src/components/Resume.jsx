@@ -42,7 +42,7 @@ export function Resume() {
               },
             ]}
           />
-          <Section title="Skills" hasBulletsSection={true} />
+          <Section title="Skills" hasEntry={false} hasBulletsSection={true} />
         </main>
       </div>
     </>

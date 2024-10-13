@@ -4,6 +4,7 @@ import BulletPoint from "./BulletPoint";
 export default function ResumeSection({
   title,
   hasBulletsSection = false,
+  hasEntry = true,
   entries = [
     {
       title: "",
@@ -13,31 +14,49 @@ export default function ResumeSection({
     },
   ],
 }) {
-  console.log(entries[0]);
-
   return (
     <section className="resumeSection">
       <h2 className="sectionTitle">{title}</h2>
       <hr></hr>
       <div className="entry">
-        <div className="entryPrimaryInfo">
-          <h3 className="entryTitle"> {entries[0].title}</h3>
-          <h4 className="entrySubtitle">{entries[0].subtitle}</h4>
-        </div>
-        <div className="entryLocationDate">
-          <span className="location">{entries[0].location}</span>
-          <span className="datePeriod">{entries[0].datePeriod}</span>
-        </div>
+        {hasEntry && (
+          // TO-DO: Set each entry as a component
+          <div className="entryHeader">
+            <div className="entryPrimaryInfo">
+              <input
+                type="text"
+                className="entryTitle"
+                placeholder={entries[0].title}
+              />
+              <input
+                type="text"
+                className="entrySubtitle"
+                placeholder={entries[0].subtitle}
+              />
+            </div>
+
+            <div className="entryLocationDate">
+              <input className="location" placeholder={entries[0].location} />
+              <input
+                className="datePeriod"
+                placeholder={entries[0].datePeriod}
+              />
+            </div>
+          </div>
+        )}
+        {hasBulletsSection && (
+          <ul className="bulletSection">
+            <BulletPoint
+              text="Highlight your accomplishments, starting with actions/verbs and using numbers where possible."
+              id={crypto.randomUUID()}
+            />
+            <BulletPoint
+              text="You've got the power."
+              id={crypto.randomUUID()}
+            />
+          </ul>
+        )}
       </div>
-      {hasBulletsSection && (
-        <ul>
-          <BulletPoint
-            text="Highlight your accomplishments, starting with actions/verbs and using numbers where possible."
-            id={crypto.randomUUID()}
-          />
-          <BulletPoint text="You've got the power." id={crypto.randomUUID()} />
-        </ul>
-      )}
     </section>
   );
 }
