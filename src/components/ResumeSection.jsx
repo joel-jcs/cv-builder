@@ -7,10 +7,10 @@ export default function ResumeSection({
   hasEntry = true,
   entries = [
     {
-      title: "",
-      subtitle: "",
-      location: "",
-      datePeriod: "",
+      defaultTitle: "",
+      defaultSubtitle: "",
+      defaultLocation: "",
+      defaultDatePeriod: "",
     },
   ],
 }) {
@@ -26,20 +26,24 @@ export default function ResumeSection({
               <input
                 type="text"
                 className="entryTitle"
-                placeholder={entries[0].title}
+                placeholder={entries[0].defaultTitle}
               />
+
               <input
                 type="text"
                 className="entrySubtitle"
-                placeholder={entries[0].subtitle}
+                placeholder={entries[0].defaultSubtitle}
               />
             </div>
 
             <div className="entryLocationDate">
-              <input className="location" placeholder={entries[0].location} />
+              <input
+                className="location"
+                placeholder={entries[0].defaultLocation}
+              />
               <input
                 className="datePeriod"
-                placeholder={entries[0].datePeriod}
+                placeholder={entries[0].defaultDatePeriod}
               />
             </div>
           </div>

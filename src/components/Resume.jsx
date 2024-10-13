@@ -13,10 +13,10 @@ export function Resume() {
             hasBulletsSection={true}
             entries={[
               {
-                title: "Company Name",
-                subtitle: "Position Title",
-                location: "Location",
-                datePeriod: "Date Period",
+                defaultTitle: "Company Name",
+                defaultSubtitle: "Position Title",
+                defaultLocation: "Location",
+                defaultDatePeriod: "Date Period",
               },
             ]}
           />
@@ -24,10 +24,10 @@ export function Resume() {
             title="Education"
             entries={[
               {
-                title: "School or University",
-                subtitle: "Degree and Field",
-                location: "Location",
-                datePeriod: "Date Period",
+                defaultTitle: "School or University",
+                defaultSubtitle: "Degree and Field",
+                defaultLocation: "Location",
+                defaultDatePeriod: "Date Period",
               },
             ]}
           />
@@ -35,10 +35,10 @@ export function Resume() {
             title="Certifications"
             entries={[
               {
-                title: "Certification Source or Entity",
-                subtitle: "Certification Title",
-                location: "Location",
-                datePeriod: "Date Period",
+                defaultTitle: "Certification Source or Entity",
+                defaultSubtitle: "Certification Title",
+                defaultLocation: "Location",
+                defaultDatePeriod: "Date Period",
               },
             ]}
           />
