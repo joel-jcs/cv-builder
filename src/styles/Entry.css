@@ -13,7 +13,7 @@
 
 .entry:hover,
 .entry:focus-within {
-  border-color: green;
+  border-color: rgb(201, 161, 28);
 }
 
 .entryHeader {
@@ -26,16 +26,21 @@
   display: flex;
   flex-direction: column;
   width: 70%;
+  align-items: start;
 }
 
 .entryTitle {
   font-size: 1.1rem;
   font-weight: bolder;
+  width: 100%;
+  text-align: left;
 }
 
 .entrySubtitle {
   font-size: 0.9rem;
   font-weight: bold;
+  width: 100%;
+  text-align: left;
 }
 
 .entryLocationDate {
@@ -43,11 +48,14 @@
   flex-direction: column;
   align-items: end;
   justify-content: end;
+  width: 30%;
 }
 
-.entryLocationDate input {
+.entryLocationDate input,
+.entryLocationDate span {
   font-size: 0.9rem;
   text-align: right;
+  width: 100%;
 }
 
 .bulletSection {
@@ -62,6 +70,8 @@
   width: 98%;
 }
 
-.bulletPoint input {
+.bulletPoint input,
+.bulletPoint span {
   width: 100%;
+  display: flex;
 }
