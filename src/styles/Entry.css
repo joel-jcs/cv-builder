@@ -11,9 +11,14 @@
   margin: 10px 0;
 }
 
-.entry:hover,
+.entry:hover {
+  border-color: rgb(201, 161, 28);
+  background-color: rgb(46, 46, 46);
+}
+
 .entry:focus-within {
   border-color: rgb(201, 161, 28);
+  background-color: rgb(30, 30, 30);
 }
 
 .entryHeader {

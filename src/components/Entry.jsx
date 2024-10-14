@@ -61,16 +61,15 @@ export default function Entry({
 
   return (
     <div
+      id={entryId}
       className="entry"
       onMouseEnter={() => !isEditing && openModal(entryId)}
       onMouseLeave={() => !isEditing && closeModal()}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
           toggleIsEditing(entryId);
-          closeModal();
         }
       }}
-      id={entryId}
     >
       {modalState === entryId && (
         <Modal
@@ -89,6 +88,7 @@ export default function Entry({
               onChange={handleChange}
               isEditing={isEditing}
               entryId={entryId}
+              toggleIsEditing={toggleIsEditing}
             />
             <Input
               className="entrySubtitle"
@@ -97,6 +97,7 @@ export default function Entry({
               onChange={handleChange}
               isEditing={isEditing}
               entryId={entryId}
+              toggleIsEditing={toggleIsEditing}
             />
           </div>
 
@@ -108,6 +109,7 @@ export default function Entry({
               onChange={handleChange}
               isEditing={isEditing}
               entryId={entryId}
+              toggleIsEditing={toggleIsEditing}
             />
             <Input
               className="datePeriod"
@@ -116,6 +118,7 @@ export default function Entry({
               onChange={handleChange}
               isEditing={isEditing}
               entryId={entryId}
+              toggleIsEditing={toggleIsEditing}
             />
           </div>
         </div>
@@ -131,6 +134,7 @@ export default function Entry({
                 onChange={handleBulletPoint}
                 isEditing={isEditing}
                 entryId={entryId}
+                toggleIsEditing={toggleIsEditing}
               />
             </li>
           ))}
