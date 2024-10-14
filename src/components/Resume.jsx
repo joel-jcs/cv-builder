@@ -29,36 +29,20 @@ export function Resume() {
             // onBlur={closeModal} */}
             <h2 className="sectionTitle">{"Experience"}</h2>
             <hr></hr>
-            <Entry
-              entryTitle="Company Name"
-              entrySubtitle="Position Title"
-              entryLocation="Location"
-              entryDatePeriod="Date Period"
-              hasBulletsSection={true}
-            />
+            <Entry sectionTitle="Experience" hasBulletsSection={true} />
           </section>
           {/* {showModal && <Modal />} */}
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Education"}</h2>
             <hr></hr>
-            <Entry
-              entryTitle="School or University"
-              entrySubtitle="Degree and Field"
-              entryLocation="Location"
-              entryDatePeriod="Date Period"
-            />
+            <Entry sectionTitle="Education" />
           </section>
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Certifications"}</h2>
             <hr></hr>
-            <Entry
-              entryTitle="Certification Source or Entity"
-              entrySubtitle="Certification Title"
-              entryLocation="Location"
-              entryDatePeriod="Date Period"
-            />
+            <Entry sectionTitle="Certifications" />
           </section>
 
           <section className="resumeSection">

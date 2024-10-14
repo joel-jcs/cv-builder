@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 export default function Input({
-  type,
+  type = "text",
   name,
   className,
   placeholder,
@@ -12,7 +13,6 @@ export default function Input({
       name={name}
       className={className}
       placeholder={placeholder}
-      id={crypto.randomUUID()}
       value={value}
       onChange={onChange}
     />
