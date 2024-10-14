@@ -13,6 +13,22 @@ export function Resume() {
     setModalState(null);
   }
 
+  const [isEditing, setIsEditing] = useState(null);
+  function startEditing(entryID) {
+    setIsEditing(entryID);
+  }
+
+  function stopEditing() {
+    setIsEditing(null);
+  }
+  const toggleIsEditing = (entryId) => {
+    if (isEditing === entryId) {
+      stopEditing();
+    } else {
+      startEditing(entryId);
+    }
+  };
+
   return (
     <>
       <div className="resumePage">
@@ -40,6 +56,8 @@ export function Resume() {
               modalState={modalState}
               openModal={openModal}
               closeModal={closeModal}
+              isEditing={isEditing}
+              toggleIsEditing={toggleIsEditing}
             />
           </section>
           {/* {showModal && <Modal />} */}
@@ -52,19 +70,36 @@ export function Resume() {
               modalState={modalState}
               openModal={openModal}
               closeModal={closeModal}
+              isEditing={isEditing}
+              toggleIsEditing={toggleIsEditing}
             />
           </section>
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Certifications"}</h2>
             <hr></hr>
-            <Entry sectionTitle="Certifications" />
+            <Entry
+              sectionTitle="Certifications"
+              modalState={modalState}
+              openModal={openModal}
+              closeModal={closeModal}
+              isEditing={isEditing}
+              toggleIsEditing={toggleIsEditing}
+            />
           </section>
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Skills"}</h2>
             <hr></hr>
-            <Entry hasEntry={false} hasBulletsSection={true} />
+            <Entry
+              hasEntry={false}
+              hasBulletsSection={true}
+              modalState={modalState}
+              openModal={openModal}
+              closeModal={closeModal}
+              isEditing={isEditing}
+              toggleIsEditing={toggleIsEditing}
+            />
           </section>
         </main>
       </div>

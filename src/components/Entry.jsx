@@ -11,6 +11,8 @@ export default function Entry({
   modalState,
   openModal,
   closeModal,
+  isEditing,
+  toggleIsEditing,
 }) {
   const locationPlaceholder = "Location";
   const datePlaceholder = "Date Period";
@@ -55,15 +57,27 @@ export default function Entry({
     setBulletPoints(updatedBulletPoints);
   };
 
-  const [randomID] = useState(crypto.randomUUID());
+  const [entryId] = useState(crypto.randomUUID());
+
   return (
     <div
       className="entry"
-      onMouseEnter={() => openModal(randomID)}
+      onMouseEnter={() => openModal(entryId)}
       onMouseLeave={closeModal}
-      id={randomID}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          toggleIsEditing(entryId);
+        }
+      }}
+      id={entryId}
     >
-      {modalState === randomID && <Modal />}
+      {modalState === entryId && (
+        <Modal
+          entryId={entryId}
+          isEditing={isEditing}
+          toggleIsEditing={toggleIsEditing}
+        />
+      )}
       {hasEntry && (
         <div className="entryHeader">
           <div className="entryPrimaryInfo">
@@ -72,12 +86,16 @@ export default function Entry({
               placeholder={titlePlaceholder}
               value={entryTitle}
               onChange={handleChange}
+              isEditing={isEditing}
+              entryId={entryId}
             />
             <Input
               className="entrySubtitle"
               placeholder={subtitlePlaceholder}
               value={entrySubtitle}
               onChange={handleChange}
+              isEditing={isEditing}
+              entryId={entryId}
             />
           </div>
 
@@ -87,12 +105,16 @@ export default function Entry({
               placeholder={locationPlaceholder}
               value={entryLocation}
               onChange={handleChange}
+              isEditing={isEditing}
+              entryId={entryId}
             />
             <Input
               className="datePeriod"
               placeholder={datePlaceholder}
               value={entryDate}
               onChange={handleChange}
+              isEditing={isEditing}
+              entryId={entryId}
             />
           </div>
         </div>
@@ -106,6 +128,8 @@ export default function Entry({
                 placeholder={bullet.placeholder}
                 value={bullet.value}
                 onChange={handleBulletPoint}
+                isEditing={isEditing}
+                entryId={entryId}
               />
             </li>
           ))}

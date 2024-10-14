@@ -6,15 +6,25 @@ export default function Input({
   placeholder,
   value,
   onChange,
+  isEditing,
+  entryId,
 }) {
-  return (
-    <input
-      type={type}
-      name={name}
-      className={className}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
-  );
+  if (isEditing && isEditing === entryId) {
+    return (
+      <input
+        type={type}
+        name={name}
+        className={className}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    );
+  } else {
+    return (
+      <span type={type} className={className}>
+        {placeholder}
+      </span>
+    );
+  }
 }
