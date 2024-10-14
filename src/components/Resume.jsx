@@ -1,6 +1,6 @@
 import "../styles/Resume.css";
 import Header from "./ResumeHeader";
-import Section from "./ResumeSection";
+import Entry from "./Entry";
 import Modal from "./Modal";
 import { useState } from "react";
 
@@ -18,46 +18,54 @@ export function Resume() {
     <>
       <div className="resumePage">
         <Header
-          showModal={showModal}
-          openModal={openModal}
-          closeModal={closeModal}
+        // showModal={showModal}
+        // openModal={openModal}
+        // closeModal={closeModal}
         />
         <main>
-          <Section
-            title="Experience"
-            hasBulletsSection={true}
-            entries={[
-              {
-                defaultTitle: "Company Name",
-                defaultSubtitle: "Position Title",
-                defaultLocation: "Location",
-                defaultDatePeriod: "Date Period",
-              },
-            ]}
-          />
-          <Section
-            title="Education"
-            entries={[
-              {
-                defaultTitle: "School or University",
-                defaultSubtitle: "Degree and Field",
-                defaultLocation: "Location",
-                defaultDatePeriod: "Date Period",
-              },
-            ]}
-          />
-          <Section
-            title="Certifications"
-            entries={[
-              {
-                defaultTitle: "Certification Source or Entity",
-                defaultSubtitle: "Certification Title",
-                defaultLocation: "Location",
-                defaultDatePeriod: "Date Period",
-              },
-            ]}
-          />
-          <Section title="Skills" hasEntry={false} hasBulletsSection={true} />
+          <section className="resumeSection">
+            {/* // onClick={openModal}
+            // onFocus={openModal}
+            // onBlur={closeModal} */}
+            <h2 className="sectionTitle">{"Experience"}</h2>
+            <hr></hr>
+            <Entry
+              entryTitle="Company Name"
+              entrySubtitle="Position Title"
+              entryLocation="Location"
+              entryDatePeriod="Date Period"
+              hasBulletsSection={true}
+            />
+          </section>
+          {/* {showModal && <Modal />} */}
+
+          <section className="resumeSection">
+            <h2 className="sectionTitle">{"Education"}</h2>
+            <hr></hr>
+            <Entry
+              entryTitle="School or University"
+              entrySubtitle="Degree and Field"
+              entryLocation="Location"
+              entryDatePeriod="Date Period"
+            />
+          </section>
+
+          <section className="resumeSection">
+            <h2 className="sectionTitle">{"Certifications"}</h2>
+            <hr></hr>
+            <Entry
+              entryTitle="Certification Source or Entity"
+              entrySubtitle="Certification Title"
+              entryLocation="Location"
+              entryDatePeriod="Date Period"
+            />
+          </section>
+
+          <section className="resumeSection">
+            <h2 className="sectionTitle">{"Skills"}</h2>
+            <hr></hr>
+            <Entry hasEntry={false} hasBulletsSection={true} />
+          </section>
         </main>
       </div>
     </>
