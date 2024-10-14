@@ -1,3 +1,5 @@
+import "../styles/Input.css";
+
 /* eslint-disable react/prop-types */
 export default function Input({
   type = "text",
@@ -22,7 +24,10 @@ export default function Input({
     );
   } else {
     return (
-      <span type={type} className={className}>
+      <span
+        type={type}
+        className={value ? className : `${className} placeholder`}
+      >
         {value ? value : placeholder}
       </span>
     );
