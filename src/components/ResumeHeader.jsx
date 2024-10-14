@@ -2,9 +2,8 @@
 import "../styles/ResumeHeader.css";
 import { useState } from "react";
 import Input from "./Input";
-import Modal from "./Modal";
 
-export default function ResumeHeader({ showModal, openModal, closeModal }) {
+export default function ResumeHeader() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -23,12 +22,11 @@ export default function ResumeHeader({ showModal, openModal, closeModal }) {
   const defaultName = "John Smith";
   const defaultEmail = "realjsmith@email.com";
   const defaultPhone = "555-555-5555";
-  const defaultLink = "Link: LinkedIn or Portfolio";
+  const defaultLink = "LinkedIn or Portfolio";
   const defaultLocation = "San Juan, PR";
 
   return (
-    <header onClick={openModal} onFocus={openModal} onBlur={closeModal}>
-      {showModal && <Modal />}
+    <header>
       <Input
         type={"text"}
         name={"name"}
@@ -45,7 +43,6 @@ export default function ResumeHeader({ showModal, openModal, closeModal }) {
           value={email}
           onChange={handleChange}
         />
-        <span className="bulletDivider">•</span>
         <Input
           type={"tel"}
           name={"phone"}
@@ -53,7 +50,6 @@ export default function ResumeHeader({ showModal, openModal, closeModal }) {
           value={phone}
           onChange={handleChange}
         />
-        <span className="bulletDivider">•</span>
         <Input
           type={"url"}
           name={"link"}
@@ -61,7 +57,6 @@ export default function ResumeHeader({ showModal, openModal, closeModal }) {
           value={link}
           onChange={handleChange}
         />
-        <span className="bulletDivider">•</span>
         <Input
           type={"text"}
           name={"location"}
