@@ -24,6 +24,7 @@ export function Resume() {
   const toggleIsEditing = (entryId) => {
     if (isEditing === entryId) {
       stopEditing();
+      closeModal();
     } else {
       startEditing(entryId);
     }

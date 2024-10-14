@@ -42,12 +42,12 @@ export default function ResumeHeader({
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
           toggleIsEditing(id);
-          closeModal();
         }
       }}
     >
       {modalState === id && (
         <Modal
+          isHeader={true}
           entryId={id}
           isEditing={isEditing}
           toggleIsEditing={toggleIsEditing}
@@ -62,6 +62,7 @@ export default function ResumeHeader({
         onChange={handleChange}
         isEditing={isEditing}
         entryId={id}
+        toggleIsEditing={toggleIsEditing}
       />
       <div className="contactDetails">
         <Input
@@ -72,6 +73,7 @@ export default function ResumeHeader({
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
+          toggleIsEditing={toggleIsEditing}
         />
         <Input
           type={"tel"}
@@ -81,6 +83,7 @@ export default function ResumeHeader({
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
+          toggleIsEditing={toggleIsEditing}
         />
         <Input
           type={"url"}
@@ -90,6 +93,7 @@ export default function ResumeHeader({
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
+          toggleIsEditing={toggleIsEditing}
         />
         <Input
           type={"text"}
@@ -99,6 +103,7 @@ export default function ResumeHeader({
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
+          toggleIsEditing={toggleIsEditing}
         />
       </div>
     </header>
