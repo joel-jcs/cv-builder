@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import "../styles/Entry.css";
+import { useState } from "react";
 import Input from "./Input";
 
 // add "handleChange" function here like the ResumeHeader
@@ -8,74 +9,99 @@ import Input from "./Input";
 export default function Entry({
   hasEntry = true,
   sectionTitle,
-  entryTitle,
-  entrySubtitle,
-  entryLocation = "Location",
-  entryDatePeriod = "Date Period",
   hasBulletsSection = false,
 }) {
-  if (sectionTitle === "Experience") {
-    entryTitle = "Company Name";
-    entrySubtitle = "Position Title";
-  } else if (sectionTitle === "Education") {
-    entryTitle = "School or University";
-    entrySubtitle = "Degree and Field";
-  } else if (sectionTitle === "Certifications") {
-    entryTitle = "Certification Title";
-    entrySubtitle = "Certification Provider";
-  }
-  // const [entryTitle, setEntryTitle] = useState("");
-  // const [entrySubtitle, setEmail] = useState("");
-  // const [entryLocation, setPhone] = useState("");
-  // const [entryDate, setLink] = useState("");
+  const locationPlaceholder = "Location";
+  const datePlaceholder = "Date Period";
+  let titlePlaceholder = "";
+  let subtitlePlaceholder = "";
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   if (name === "name") setName(value);
-  //   if (name === "email") setEmail(value);
-  //   if (name === "phone") setPhone(value);
-  //   if (name === "link") setLink(value);
-  //   if (name === "location") setLocation(value);
-  // };
+  if (sectionTitle === "Experience") {
+    titlePlaceholder = "Company Name";
+    subtitlePlaceholder = "Position Title";
+  } else if (sectionTitle === "Education") {
+    titlePlaceholder = "School or University";
+    subtitlePlaceholder = "Degree and Field";
+  } else if (sectionTitle === "Certifications") {
+    titlePlaceholder = "Certification Title";
+    subtitlePlaceholder = "Certification Provider";
+  }
+
+  const [entryTitle, setTitle] = useState("");
+  const [entrySubtitle, setSubtitle] = useState("");
+  const [entryLocation, setLocation] = useState("");
+  const [entryDate, setDate] = useState("");
+  const [bulletPoints, setBulletPoints] = useState([
+    { placeholder: "Highlight your accomplishments...", value: "" },
+    { placeholder: "You've got the power.", value: "" },
+  ]);
+
+  const handleChange = (e) => {
+    const { className, value } = e.target;
+    if (className === "entryTitle") setTitle(value);
+    if (className === "entrySubtitle") setSubtitle(value);
+    if (className === "location") setLocation(value);
+    if (className === "datePeriod") setDate(value);
+  };
+
+  const handleBulletPoint = (e) => {
+    const { name, value } = e.target;
+    const index = name.split("-")[1];
+    const updatedBulletPoints = [...bulletPoints];
+    updatedBulletPoints[index].value = value;
+    setBulletPoints(updatedBulletPoints);
+  };
+
+  console.log(entryTitle, entrySubtitle, entryLocation, entryDate);
+  console.log(bulletPoints);
 
   return (
     <div className="entry">
       {hasEntry && (
         <div className="entryHeader">
           <div className="entryPrimaryInfo">
-            <input
-              type="text"
+            <Input
               className="entryTitle"
-              placeholder={entryTitle}
+              placeholder={titlePlaceholder}
+              value={entryTitle}
+              onChange={handleChange}
             />
-
-            <input
-              type="text"
+            <Input
               className="entrySubtitle"
-              placeholder={entrySubtitle}
+              placeholder={subtitlePlaceholder}
+              value={entrySubtitle}
+              onChange={handleChange}
             />
           </div>
 
           <div className="entryLocationDate">
-            <input className="location" placeholder={entryLocation} />
-            <input className="datePeriod" placeholder={entryDatePeriod} />
+            <Input
+              className="location"
+              placeholder={locationPlaceholder}
+              value={entryLocation}
+              onChange={handleChange}
+            />
+            <Input
+              className="datePeriod"
+              placeholder={datePlaceholder}
+              value={entryDate}
+              onChange={handleChange}
+            />
           </div>
         </div>
       )}
       {hasBulletsSection && (
         <ul className="bulletSection">
-          <li className="bulletPoint">
-            {/* to-do: update the input's props here */}
-            <Input
-              placeholder={
-                "Highlight your accomplishments, starting with actions/verbs and using numbers where possible."
-              }
-            />
-          </li>
-          <li className="bulletPoint">
-            {/* to-do: update the input's props here */}
-            <Input placeholder={"You've got the power."} />
-          </li>
+          {bulletPoints.map((bullet, index) => (
+            <li className="bulletPoint" key={index}>
+              <Input
+                name={`bulletPoint-${index}`}
+                placeholder={bullet.placeholder}
+                value={bullet.value}
+                onChange={handleBulletPoint}
+              />
+            </li>
+          ))}
         </ul>
       )}
     </div>
