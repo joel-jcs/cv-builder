@@ -2,20 +2,24 @@
 import "../styles/Entry.css";
 import { useState } from "react";
 import Input from "./Input";
-
-// add "handleChange" function here like the ResumeHeader
-// so that we can edit the input and properly set the state variables
+import Modal from "./Modal";
 
 export default function Entry({
   hasEntry = true,
   sectionTitle,
   hasBulletsSection = false,
+  modalState,
+  openModal,
+  closeModal,
 }) {
   const locationPlaceholder = "Location";
   const datePlaceholder = "Date Period";
   let titlePlaceholder = "";
   let subtitlePlaceholder = "";
 
+  // can add a condition for Skills section.
+  // if it's skills, I can change the className of the ul/li/bulletpoint at the bottom,
+  // so that each skill shows as horizontal bullet point rather than vertically
   if (sectionTitle === "Experience") {
     titlePlaceholder = "Company Name";
     subtitlePlaceholder = "Position Title";
@@ -31,11 +35,6 @@ export default function Entry({
   const [entrySubtitle, setSubtitle] = useState("");
   const [entryLocation, setLocation] = useState("");
   const [entryDate, setDate] = useState("");
-  const [bulletPoints, setBulletPoints] = useState([
-    { placeholder: "Highlight your accomplishments...", value: "" },
-    { placeholder: "You've got the power.", value: "" },
-  ]);
-
   const handleChange = (e) => {
     const { className, value } = e.target;
     if (className === "entryTitle") setTitle(value);
@@ -44,6 +43,10 @@ export default function Entry({
     if (className === "datePeriod") setDate(value);
   };
 
+  const [bulletPoints, setBulletPoints] = useState([
+    { placeholder: "Highlight your accomplishments...", value: "" },
+    { placeholder: "You've got the power.", value: "" },
+  ]);
   const handleBulletPoint = (e) => {
     const { name, value } = e.target;
     const index = name.split("-")[1];
@@ -52,11 +55,15 @@ export default function Entry({
     setBulletPoints(updatedBulletPoints);
   };
 
-  console.log(entryTitle, entrySubtitle, entryLocation, entryDate);
-  console.log(bulletPoints);
-
+  const [randomID] = useState(crypto.randomUUID());
   return (
-    <div className="entry">
+    <div
+      className="entry"
+      onMouseEnter={() => openModal(randomID)}
+      onMouseLeave={closeModal}
+      id={randomID}
+    >
+      {modalState === randomID && <Modal />}
       {hasEntry && (
         <div className="entryHeader">
           <div className="entryPrimaryInfo">

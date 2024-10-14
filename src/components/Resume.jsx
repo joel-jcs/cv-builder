@@ -1,17 +1,16 @@
 import "../styles/Resume.css";
 import Header from "./ResumeHeader";
 import Entry from "./Entry";
-import Modal from "./Modal";
 import { useState } from "react";
 
 export function Resume() {
-  const [showModal, setShowModal] = useState(false);
-  function openModal() {
-    setShowModal(true);
+  const [modalState, setModalState] = useState(null);
+  function openModal(entryID) {
+    setModalState(entryID);
   }
 
   function closeModal() {
-    setShowModal(false);
+    setModalState(null);
   }
 
   return (
@@ -29,14 +28,31 @@ export function Resume() {
             // onBlur={closeModal} */}
             <h2 className="sectionTitle">{"Experience"}</h2>
             <hr></hr>
-            <Entry sectionTitle="Experience" hasBulletsSection={true} />
+            {/* <Entry
+              sectionTitle="Experience"
+              hasBulletsSection={true}
+              modalState={modalState}
+              toggleModal={toggleModal}
+            /> */}
+            <Entry
+              sectionTitle="Experience"
+              hasBulletsSection={true}
+              modalState={modalState}
+              openModal={openModal}
+              closeModal={closeModal}
+            />
           </section>
           {/* {showModal && <Modal />} */}
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Education"}</h2>
             <hr></hr>
-            <Entry sectionTitle="Education" />
+            <Entry
+              sectionTitle="Education"
+              modalState={modalState}
+              openModal={openModal}
+              closeModal={closeModal}
+            />
           </section>
 
           <section className="resumeSection">
