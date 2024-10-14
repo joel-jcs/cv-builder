@@ -23,7 +23,7 @@ export default function Input({
   } else {
     return (
       <span type={type} className={className}>
-        {placeholder}
+        {value ? value : placeholder}
       </span>
     );
   }
