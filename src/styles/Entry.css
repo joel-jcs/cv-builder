@@ -1,22 +1,3 @@
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  padding: 10px;
-}
-
-.sectionTitle {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 auto;
-  margin-top: 20px;
-}
-
-hr {
-  margin: 5px 0 10px 0;
-  width: 100%;
-}
-
 .entry {
   display: flex;
   flex-direction: column;
@@ -61,8 +42,9 @@ hr {
   justify-content: end;
 }
 
-.entryLocationDate span {
+.entryLocationDate input {
   font-size: 0.9rem;
+  text-align: right;
 }
 
 .bulletSection {

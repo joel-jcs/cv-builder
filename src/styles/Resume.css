@@ -18,6 +18,25 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 10px;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+hr {
+  margin: 5px 0 10px 0;
+  width: 100%;
+}
+
 input {
   border: none;
   outline: none;
