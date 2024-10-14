@@ -33,23 +33,26 @@ export function Resume() {
     <>
       <div className="resumePage">
         <Header
-        // showModal={showModal}
-        // openModal={openModal}
-        // closeModal={closeModal}
+          modalState={modalState}
+          openModal={openModal}
+          closeModal={closeModal}
+          isEditing={isEditing}
+          toggleIsEditing={toggleIsEditing}
         />
         <main>
           <section className="resumeSection">
-            {/* // onClick={openModal}
-            // onFocus={openModal}
-            // onBlur={closeModal} */}
             <h2 className="sectionTitle">{"Experience"}</h2>
             <hr></hr>
-            {/* <Entry
+            <Entry
               sectionTitle="Experience"
               hasBulletsSection={true}
               modalState={modalState}
-              toggleModal={toggleModal}
-            /> */}
+              openModal={openModal}
+              closeModal={closeModal}
+              isEditing={isEditing}
+              toggleIsEditing={toggleIsEditing}
+            />
+
             <Entry
               sectionTitle="Experience"
               hasBulletsSection={true}
@@ -60,7 +63,6 @@ export function Resume() {
               toggleIsEditing={toggleIsEditing}
             />
           </section>
-          {/* {showModal && <Modal />} */}
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Education"}</h2>

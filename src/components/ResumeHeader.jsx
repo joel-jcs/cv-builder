@@ -2,8 +2,15 @@
 import "../styles/ResumeHeader.css";
 import { useState } from "react";
 import Input from "./Input";
+import Modal from "./Modal";
 
-export default function ResumeHeader() {
+export default function ResumeHeader({
+  modalState,
+  openModal,
+  closeModal,
+  isEditing,
+  toggleIsEditing,
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -25,8 +32,27 @@ export default function ResumeHeader() {
   const defaultLink = "LinkedIn or Portfolio";
   const defaultLocation = "San Juan, PR";
 
+  const [id] = useState(crypto.randomUUID());
+
   return (
-    <header>
+    <header
+      id={id}
+      onMouseEnter={() => !isEditing && openModal(id)}
+      onMouseLeave={() => !isEditing && closeModal()}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          toggleIsEditing(id);
+          closeModal();
+        }
+      }}
+    >
+      {modalState === id && (
+        <Modal
+          entryId={id}
+          isEditing={isEditing}
+          toggleIsEditing={toggleIsEditing}
+        />
+      )}
       <Input
         type={"text"}
         name={"name"}
@@ -34,6 +60,8 @@ export default function ResumeHeader() {
         placeholder={defaultName}
         value={name}
         onChange={handleChange}
+        isEditing={isEditing}
+        entryId={id}
       />
       <div className="contactDetails">
         <Input
@@ -42,6 +70,8 @@ export default function ResumeHeader() {
           placeholder={defaultEmail}
           value={email}
           onChange={handleChange}
+          isEditing={isEditing}
+          entryId={id}
         />
         <Input
           type={"tel"}
@@ -49,6 +79,8 @@ export default function ResumeHeader() {
           placeholder={defaultPhone}
           value={phone}
           onChange={handleChange}
+          isEditing={isEditing}
+          entryId={id}
         />
         <Input
           type={"url"}
@@ -56,6 +88,8 @@ export default function ResumeHeader() {
           placeholder={defaultLink}
           value={link}
           onChange={handleChange}
+          isEditing={isEditing}
+          entryId={id}
         />
         <Input
           type={"text"}
@@ -63,6 +97,8 @@ export default function ResumeHeader() {
           placeholder={defaultLocation}
           value={location}
           onChange={handleChange}
+          isEditing={isEditing}
+          entryId={id}
         />
       </div>
     </header>
