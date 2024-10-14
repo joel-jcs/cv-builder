@@ -9,11 +9,17 @@ header {
   border-radius: 0.5rem;
   width: 97.5%;
   margin: 0 auto;
+  padding-top: 20px;
 }
 
-header:hover,
+header:hover {
+  border-color: rgb(201, 161, 28);
+  background-color: rgb(46, 46, 46);
+}
+
 header:focus-within {
   border-color: rgb(201, 161, 28);
+  background-color: rgb(30, 30, 30);
 }
 
 .name {
