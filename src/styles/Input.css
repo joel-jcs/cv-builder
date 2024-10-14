@@ -5,7 +5,13 @@ input {
   padding: 2.5px 0;
 }
 
-input:focus::placeholder,
+input:focus::placeholder {
+  opacity: 0.4;
+}
+span {
+  opacity: 1;
+}
+
 .placeholder {
   opacity: 0.5;
 }

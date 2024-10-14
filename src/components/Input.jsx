@@ -8,8 +8,8 @@ export default function Input({
   placeholder,
   value,
   onChange,
-  isEditing,
   entryId,
+  isEditing,
 }) {
   if (isEditing && isEditing === entryId) {
     return (
