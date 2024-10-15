@@ -6,6 +6,9 @@ export default function Modal({
   entryId,
   isEditing,
   toggleIsEditing,
+  sectionTitle,
+  addEntry,
+  deleteEntry,
 }) {
   return (
     <div className="modal">
@@ -24,7 +27,7 @@ export default function Modal({
         {/* can only add up to certain amount */}
         {/* can only delete if entryQty > 1 */}
         {!isHeader && !isEditing && (
-          <button>
+          <button onClick={() => addEntry(sectionTitle)}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <title>plus-circle</title>
               <path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
@@ -32,7 +35,7 @@ export default function Modal({
           </button>
         )}
         {!isHeader && !isEditing && (
-          <button>
+          <button onClick={() => deleteEntry(sectionTitle, entryId)}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <title>trash-can</title>
               <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" />

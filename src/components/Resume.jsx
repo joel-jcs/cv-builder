@@ -30,30 +30,56 @@ export function Resume() {
     }
   };
 
+  const generateEntryId = () => crypto.randomUUID();
+
   const [entries, setEntries] = useState({
     Experience: [
       {
         sectionTitle: "Experience",
-        hasBulletsSection: true,
+        entryId: generateEntryId(),
       },
     ],
     Education: [
       {
         sectionTitle: "Education",
+        entryId: generateEntryId(),
       },
     ],
     Certifications: [
       {
         sectionTitle: "Certifications",
+        entryId: generateEntryId(),
       },
     ],
     Skills: [
       {
-        hasEntry: false,
-        hasBulletsSection: true,
+        sectionTitle: "Skills",
+        entryId: generateEntryId(),
       },
     ],
   });
+
+  function addEntry(sectionTitle) {
+    setEntries((prevEntries) => ({
+      ...prevEntries,
+      [sectionTitle]: [
+        ...prevEntries[sectionTitle],
+        { sectionTitle, entryId: generateEntryId() },
+      ],
+    }));
+  }
+
+  function deleteEntry(sectionTitle, entryId) {
+    console.log(sectionTitle, entryId);
+    setEntries((prevEntries) => ({
+      ...prevEntries,
+      [sectionTitle]: prevEntries[sectionTitle].filter((e) => {
+        console.log(e);
+        console.log(e.entryId !== entryId);
+        return e.entryId !== entryId;
+      }),
+    }));
+  }
 
   return (
     <>
@@ -79,6 +105,8 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  addEntry={addEntry}
+                  deleteEntry={deleteEntry}
                 />
               );
             })}
@@ -97,6 +125,8 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  addEntry={addEntry}
+                  deleteEntry={deleteEntry}
                 />
               );
             })}
@@ -115,6 +145,8 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  addEntry={addEntry}
+                  deleteEntry={deleteEntry}
                 />
               );
             })}
@@ -133,6 +165,8 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  addEntry={addEntry}
+                  deleteEntry={deleteEntry}
                 />
               );
             })}

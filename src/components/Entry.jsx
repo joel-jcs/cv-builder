@@ -5,14 +5,17 @@ import Input from "./Input";
 import Modal from "./Modal";
 
 export default function Entry({
-  hasEntry = true,
+  hasEntry,
   sectionTitle,
-  hasBulletsSection = false,
+  entryId,
+  hasBulletsSection,
   modalState,
   openModal,
   closeModal,
   isEditing,
   toggleIsEditing,
+  addEntry,
+  deleteEntry,
 }) {
   const locationPlaceholder = "Location";
   const datePlaceholder = "Date Period";
@@ -25,12 +28,21 @@ export default function Entry({
   if (sectionTitle === "Experience") {
     titlePlaceholder = "Company Name";
     subtitlePlaceholder = "Position Title";
+    hasEntry = true;
+    hasBulletsSection = true;
   } else if (sectionTitle === "Education") {
     titlePlaceholder = "School or University";
     subtitlePlaceholder = "Degree and Field";
+    hasEntry = true;
+    hasBulletsSection = false;
   } else if (sectionTitle === "Certifications") {
     titlePlaceholder = "Certification Title";
     subtitlePlaceholder = "Certification Provider";
+    hasEntry = true;
+    hasBulletsSection = false;
+  } else if (sectionTitle === "Skills") {
+    hasEntry = false;
+    hasBulletsSection = true;
   }
 
   const [entryTitle, setTitle] = useState("");
@@ -57,8 +69,6 @@ export default function Entry({
     setBulletPoints(updatedBulletPoints);
   };
 
-  const [entryId] = useState(crypto.randomUUID());
-
   return (
     <div
       id={entryId}
@@ -76,6 +86,9 @@ export default function Entry({
           entryId={entryId}
           isEditing={isEditing}
           toggleIsEditing={toggleIsEditing}
+          sectionTitle={sectionTitle}
+          addEntry={addEntry}
+          deleteEntry={deleteEntry}
         />
       )}
       {hasEntry && (
