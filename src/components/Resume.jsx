@@ -30,6 +30,31 @@ export function Resume() {
     }
   };
 
+  const [entries, setEntries] = useState({
+    Experience: [
+      {
+        sectionTitle: "Experience",
+        hasBulletsSection: true,
+      },
+    ],
+    Education: [
+      {
+        sectionTitle: "Education",
+      },
+    ],
+    Certifications: [
+      {
+        sectionTitle: "Certifications",
+      },
+    ],
+    Skills: [
+      {
+        hasEntry: false,
+        hasBulletsSection: true,
+      },
+    ],
+  });
+
   return (
     <>
       <div className="resumePage">
@@ -44,65 +69,73 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Experience"}</h2>
             <hr></hr>
-            <Entry
-              sectionTitle="Experience"
-              hasBulletsSection={true}
-              modalState={modalState}
-              openModal={openModal}
-              closeModal={closeModal}
-              isEditing={isEditing}
-              toggleIsEditing={toggleIsEditing}
-            />
-
-            <Entry
-              sectionTitle="Experience"
-              hasBulletsSection={true}
-              modalState={modalState}
-              openModal={openModal}
-              closeModal={closeModal}
-              isEditing={isEditing}
-              toggleIsEditing={toggleIsEditing}
-            />
+            {entries.Experience.map((entry, index) => {
+              return (
+                <Entry
+                  key={index}
+                  {...entry}
+                  modalState={modalState}
+                  openModal={openModal}
+                  closeModal={closeModal}
+                  isEditing={isEditing}
+                  toggleIsEditing={toggleIsEditing}
+                />
+              );
+            })}
           </section>
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Education"}</h2>
             <hr></hr>
-            <Entry
-              sectionTitle="Education"
-              modalState={modalState}
-              openModal={openModal}
-              closeModal={closeModal}
-              isEditing={isEditing}
-              toggleIsEditing={toggleIsEditing}
-            />
+            {entries.Education.map((entry, index) => {
+              return (
+                <Entry
+                  key={index}
+                  {...entry}
+                  modalState={modalState}
+                  openModal={openModal}
+                  closeModal={closeModal}
+                  isEditing={isEditing}
+                  toggleIsEditing={toggleIsEditing}
+                />
+              );
+            })}
           </section>
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Certifications"}</h2>
             <hr></hr>
-            <Entry
-              sectionTitle="Certifications"
-              modalState={modalState}
-              openModal={openModal}
-              closeModal={closeModal}
-              isEditing={isEditing}
-              toggleIsEditing={toggleIsEditing}
-            />
+            {entries.Certifications.map((entry, index) => {
+              return (
+                <Entry
+                  key={index}
+                  {...entry}
+                  modalState={modalState}
+                  openModal={openModal}
+                  closeModal={closeModal}
+                  isEditing={isEditing}
+                  toggleIsEditing={toggleIsEditing}
+                />
+              );
+            })}
           </section>
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Skills"}</h2>
             <hr></hr>
-            <Entry
-              hasEntry={false}
-              hasBulletsSection={true}
-              modalState={modalState}
-              openModal={openModal}
-              closeModal={closeModal}
-              isEditing={isEditing}
-              toggleIsEditing={toggleIsEditing}
-            />
+            {entries.Skills.map((entry, index) => {
+              return (
+                <Entry
+                  key={index}
+                  {...entry}
+                  modalState={modalState}
+                  openModal={openModal}
+                  closeModal={closeModal}
+                  isEditing={isEditing}
+                  toggleIsEditing={toggleIsEditing}
+                />
+              );
+            })}
           </section>
         </main>
       </div>
