@@ -15,6 +15,7 @@ header {
 header:hover {
   border-color: rgb(201, 161, 28);
   background-color: rgb(46, 46, 46);
+  cursor: pointer;
 }
 
 header:focus-within {

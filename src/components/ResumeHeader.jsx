@@ -42,6 +42,7 @@ export default function ResumeHeader({
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
           toggleIsEditing(id);
+          closeModal();
         }
       }}
     >

@@ -95,6 +95,7 @@ export default function Entry({
       ];
     });
 
+    // set timeout to wait for re-render before getting last bulletpoint
     setTimeout(() => {
       const bulletPoints = parentNode.querySelectorAll("input");
       const newBulletPoint = bulletPoints[newItemIndex];
@@ -111,6 +112,7 @@ export default function Entry({
       );
     });
 
+    // set timeout to wait for re-render before getting last bulletpoint
     setTimeout(() => {
       const bulletPoints = parentNode.querySelectorAll("input");
       let nextBulletPoint;
@@ -133,6 +135,7 @@ export default function Entry({
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
           toggleIsEditing(entryId);
+          closeModal();
         }
       }}
     >

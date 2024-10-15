@@ -8,12 +8,13 @@
   border-style: solid;
   border-color: transparent;
   border-radius: 0.5rem;
-  margin: 10px 0;
+  margin: 3px 0;
 }
 
 .entry:hover {
   border-color: rgb(201, 161, 28);
   background-color: rgb(46, 46, 46);
+  cursor: pointer;
 }
 
 .entry:focus-within {

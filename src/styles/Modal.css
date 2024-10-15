@@ -3,7 +3,7 @@
   left: 40%;
   bottom: 100%;
   width: 200px;
-  height: 80px;
+  height: 60px;
   background-color: orange;
   display: flex;
   justify-content: center;
@@ -11,16 +11,6 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
   padding: 0 10px;
-}
-
-.modal::before {
-  content: "";
-  position: absolute;
-  bottom: -32px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 20px solid transparent;
-  border-top-color: orange;
 }
 
 .modalContent {
