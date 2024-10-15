@@ -7,9 +7,20 @@ export default function Modal({
   isEditing,
   toggleIsEditing,
   sectionTitle,
+  entriesLength,
   addEntry,
   deleteEntry,
 }) {
+  const minEntries = 1;
+  const maxEntries =
+    sectionTitle === "Experience"
+      ? 5
+      : sectionTitle === "Education"
+      ? 3
+      : sectionTitle === "Certifications"
+      ? 5
+      : 10;
+
   return (
     <div className="modal">
       <div className="modalContent">
@@ -23,10 +34,7 @@ export default function Modal({
         ) : (
           <button onClick={() => toggleIsEditing(entryId)}>Submit</button>
         )}
-        {/* pending add Entry and delete entry functionality */}
-        {/* can only add up to certain amount */}
-        {/* can only delete if entryQty > 1 */}
-        {!isHeader && !isEditing && (
+        {!isHeader && !isEditing && entriesLength < maxEntries && (
           <button onClick={() => addEntry(sectionTitle)}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <title>plus-circle</title>
@@ -34,7 +42,7 @@ export default function Modal({
             </svg>
           </button>
         )}
-        {!isHeader && !isEditing && (
+        {!isHeader && !isEditing && entriesLength > minEntries && (
           <button onClick={() => deleteEntry(sectionTitle, entryId)}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <title>trash-can</title>

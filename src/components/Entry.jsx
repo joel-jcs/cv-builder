@@ -8,6 +8,7 @@ export default function Entry({
   hasEntry,
   sectionTitle,
   entryId,
+  entriesLength,
   hasBulletsSection,
   modalState,
   openModal,
@@ -74,6 +75,7 @@ export default function Entry({
       className="entry"
       onMouseEnter={() => !isEditing && openModal(entryId)}
       onMouseLeave={() => !isEditing && closeModal()}
+      // to-do: add editing on click
       // onClick={() => !isEditing && toggleIsEditing(entryId)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -88,6 +90,7 @@ export default function Entry({
           isEditing={isEditing}
           toggleIsEditing={toggleIsEditing}
           sectionTitle={sectionTitle}
+          entriesLength={entriesLength}
           addEntry={addEntry}
           deleteEntry={deleteEntry}
         />

@@ -102,7 +102,9 @@ export function Resume() {
               return (
                 <Entry
                   key={entry.entryId}
-                  {...entry}
+                  sectionTitle={entry.sectionTitle}
+                  entryId={entry.entryId}
+                  entriesLength={entries.Experience.length}
                   modalState={modalState}
                   openModal={openModal}
                   closeModal={closeModal}
@@ -122,7 +124,9 @@ export function Resume() {
               return (
                 <Entry
                   key={entry.entryId}
-                  {...entry}
+                  sectionTitle={entry.sectionTitle}
+                  entryId={entry.entryId}
+                  entriesLength={entries.Education.length}
                   modalState={modalState}
                   openModal={openModal}
                   closeModal={closeModal}
@@ -142,7 +146,9 @@ export function Resume() {
               return (
                 <Entry
                   key={entry.entryId}
-                  {...entry}
+                  sectionTitle={entry.sectionTitle}
+                  entryId={entry.entryId}
+                  entriesLength={entries.Certifications.length}
                   modalState={modalState}
                   openModal={openModal}
                   closeModal={closeModal}
@@ -162,7 +168,9 @@ export function Resume() {
               return (
                 <Entry
                   key={entry.entryId}
-                  {...entry}
+                  sectionTitle={entry.sectionTitle}
+                  entryId={entry.entryId}
+                  entriesLength={entries.Skills.length}
                   modalState={modalState}
                   openModal={openModal}
                   closeModal={closeModal}
