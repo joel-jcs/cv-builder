@@ -30,15 +30,36 @@ export default function Bulletpoint({
               parentNode.children,
               e.target.parentNode
             );
-
             if (e.key === "Enter") {
               addBulletPoint(parentNode, index);
             }
-            if (e.key === "Backspace" && e.target.value === "") {
+            if (
+              (e.key === "Backspace" || e.key === "Delete") &&
+              e.target.value === ""
+            ) {
               if (parentNode.children.length === 1) {
                 return;
               }
               deleteBulletPoint(bulletPointId, parentNode, index);
+            }
+            if (e.key === "ArrowUp") {
+              if (index > 0) {
+                const prevInput =
+                  parentNode.children[index - 1].querySelector("input");
+                if (prevInput) {
+                  prevInput.focus();
+                }
+              }
+            }
+
+            if (e.key === "ArrowDown") {
+              if (index < parentNode.children.length - 1) {
+                const nextInput =
+                  parentNode.children[index + 1].querySelector("input");
+                if (nextInput) {
+                  nextInput.focus();
+                }
+              }
             }
           }}
         />
