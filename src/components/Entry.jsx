@@ -23,6 +23,7 @@ export default function Entry({
   const datePlaceholder = "Date Period";
   let titlePlaceholder = "";
   let subtitlePlaceholder = "";
+  let bulletPlaceholder = "";
 
   // can add a condition for Skills section.
   // if it's skills, I can change the className of the ul/li/bulletpoint at the bottom,
@@ -30,6 +31,8 @@ export default function Entry({
   if (sectionTitle === "Experience") {
     titlePlaceholder = "Company Name";
     subtitlePlaceholder = "Position Title";
+    bulletPlaceholder =
+      "Add a responsibility or result here --- ['Enter' = add line | 'Backspace' = delete]";
     hasEntry = true;
     hasBulletsSection = true;
   } else if (sectionTitle === "Education") {
@@ -45,6 +48,8 @@ export default function Entry({
   } else if (sectionTitle === "Skills") {
     hasEntry = false;
     hasBulletsSection = true;
+    bulletPlaceholder =
+      "Share your skills here --- ['Enter' = add line | 'Backspace' = delete]";
   }
 
   const [entryTitle, setTitle] = useState("");
@@ -64,12 +69,6 @@ export default function Entry({
   const [bulletPoints, setBulletPoints] = useState([
     {
       bulletPointId: generateBulletPointId(),
-      placeholder: "Highlight your accomplishments...",
-      value: "",
-    },
-    {
-      bulletPointId: generateBulletPointId(),
-      placeholder: "You've got the power.",
       value: "",
     },
   ]);
@@ -81,13 +80,15 @@ export default function Entry({
     setBulletPoints(updatedBulletPoints);
   };
 
-  function addBulletPoint(parentNode, newItemIndex) {
+  function addBulletPoint(parentNode, index) {
+    const newItemIndex = index + 1;
+
     setBulletPoints((prevEntries) => {
       return [
         ...prevEntries.slice(0, newItemIndex),
         {
           bulletPointId: generateBulletPointId(),
-          placeholder: "New bullet point...",
+          // placeholder: "New bullet point...",
           value: "",
         },
         ...prevEntries.slice(newItemIndex),
@@ -95,19 +96,31 @@ export default function Entry({
     });
 
     setTimeout(() => {
-      const bullets = parentNode.querySelectorAll("input");
-      const newBullets = bullets[newItemIndex];
-      newBullets.focus();
+      const bulletPoints = parentNode.querySelectorAll("input");
+      const newBulletPoint = bulletPoints[newItemIndex];
+      newBulletPoint.focus();
     }, 1);
   }
 
-  function deleteBulletPoint(bulletPointId) {
+  function deleteBulletPoint(bulletPointId, parentNode, index) {
+    let prevItemIndex = index - 1;
+
     setBulletPoints((prevEntries) => {
-      return [
-        ...prevEntries,
-        prevEntries.filter((entry) => entry.bulletPointId !== bulletPointId),
-      ];
+      return prevEntries.filter(
+        (entry) => entry.bulletPointId !== bulletPointId
+      );
     });
+
+    setTimeout(() => {
+      const bulletPoints = parentNode.querySelectorAll("input");
+      let nextBulletPoint;
+      if (!bulletPoints[index]) {
+        nextBulletPoint = bulletPoints[prevItemIndex];
+      } else {
+        nextBulletPoint = bulletPoints[index];
+      }
+      nextBulletPoint.focus();
+    }, 1);
   }
 
   return (
@@ -183,21 +196,19 @@ export default function Entry({
       {hasBulletsSection && (
         <ul className="bulletSection">
           {bulletPoints.map((bullet, index) => (
-            // will need to set the key as something unique
-            <li className="bulletPoint" key={index}>
-              <BulletPoint
-                bulletPointId={bullet.bulletPointId}
-                name={`bulletPoint-${index}`}
-                placeholder={bullet.placeholder}
-                value={bullet.value}
-                changeBulletPoint={changeBulletPoint}
-                isEditing={isEditing}
-                entryId={entryId}
-                toggleIsEditing={toggleIsEditing}
-                addBulletPoint={addBulletPoint}
-                deleteBulletPoint={deleteBulletPoint}
-              />
-            </li>
+            <BulletPoint
+              key={bullet.bulletPointId}
+              bulletPointId={bullet.bulletPointId}
+              name={`bulletPoint-${index}`}
+              placeholder={bulletPlaceholder}
+              value={bullet.value}
+              changeBulletPoint={changeBulletPoint}
+              isEditing={isEditing}
+              entryId={entryId}
+              toggleIsEditing={toggleIsEditing}
+              addBulletPoint={addBulletPoint}
+              deleteBulletPoint={deleteBulletPoint}
+            />
           ))}
         </ul>
       )}
