@@ -2,6 +2,7 @@
 import "../styles/Entry.css";
 import { useState } from "react";
 import Input from "./Input";
+import BulletPoint from "./BulletPoint";
 import Modal from "./Modal";
 
 export default function Entry({
@@ -58,17 +59,47 @@ export default function Entry({
     if (className === "datePeriod") setDate(value);
   };
 
+  const generateBulletPointId = () => crypto.randomUUID();
+
   const [bulletPoints, setBulletPoints] = useState([
-    { placeholder: "Highlight your accomplishments...", value: "" },
-    { placeholder: "You've got the power.", value: "" },
+    {
+      bulletPointId: generateBulletPointId(),
+      placeholder: "Highlight your accomplishments...",
+      value: "",
+    },
+    {
+      bulletPointId: generateBulletPointId(),
+      placeholder: "You've got the power.",
+      value: "",
+    },
   ]);
-  const handleBulletPoint = (e) => {
+  const changeBulletPoint = (e) => {
     const { name, value } = e.target;
     const index = name.split("-")[1];
     const updatedBulletPoints = [...bulletPoints];
     updatedBulletPoints[index].value = value;
     setBulletPoints(updatedBulletPoints);
   };
+  function addBulletPoint() {
+    setBulletPoints((prevEntries) => {
+      return [
+        ...prevEntries,
+        {
+          bulletPointId: generateBulletPointId(),
+          placeholder: "New bullet point...",
+          value: "",
+        },
+      ];
+    });
+  }
+  function deleteBulletPoint(bulletPointId) {
+    setBulletPoints((prevEntries) => {
+      return [
+        ...prevEntries,
+        prevEntries.filter((entry) => entry.bulletPointId !== bulletPointId),
+      ];
+    });
+  }
 
   return (
     <div
@@ -143,15 +174,18 @@ export default function Entry({
       {hasBulletsSection && (
         <ul className="bulletSection">
           {bulletPoints.map((bullet, index) => (
+            // will need to set the key as something unique
             <li className="bulletPoint" key={index}>
-              <Input
+              <BulletPoint
                 name={`bulletPoint-${index}`}
                 placeholder={bullet.placeholder}
                 value={bullet.value}
-                onChange={handleBulletPoint}
+                onChange={changeBulletPoint}
                 isEditing={isEditing}
                 entryId={entryId}
                 toggleIsEditing={toggleIsEditing}
+                addBulletPoint={addBulletPoint}
+                deleteBulletPoint={deleteBulletPoint}
               />
             </li>
           ))}
