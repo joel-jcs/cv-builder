@@ -80,18 +80,27 @@ export default function Entry({
     updatedBulletPoints[index].value = value;
     setBulletPoints(updatedBulletPoints);
   };
-  function addBulletPoint() {
+
+  function addBulletPoint(parentNode, newItemIndex) {
     setBulletPoints((prevEntries) => {
       return [
-        ...prevEntries,
+        ...prevEntries.slice(0, newItemIndex),
         {
           bulletPointId: generateBulletPointId(),
           placeholder: "New bullet point...",
           value: "",
         },
+        ...prevEntries.slice(newItemIndex),
       ];
     });
+
+    setTimeout(() => {
+      const bullets = parentNode.querySelectorAll("input");
+      const newBullets = bullets[newItemIndex];
+      newBullets.focus();
+    }, 1);
   }
+
   function deleteBulletPoint(bulletPointId) {
     setBulletPoints((prevEntries) => {
       return [
@@ -177,10 +186,11 @@ export default function Entry({
             // will need to set the key as something unique
             <li className="bulletPoint" key={index}>
               <BulletPoint
+                bulletPointId={bullet.bulletPointId}
                 name={`bulletPoint-${index}`}
                 placeholder={bullet.placeholder}
                 value={bullet.value}
-                onChange={changeBulletPoint}
+                changeBulletPoint={changeBulletPoint}
                 isEditing={isEditing}
                 entryId={entryId}
                 toggleIsEditing={toggleIsEditing}
