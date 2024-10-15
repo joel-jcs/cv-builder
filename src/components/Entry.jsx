@@ -71,10 +71,10 @@ export default function Entry({
 
   return (
     <div
-      id={entryId}
       className="entry"
       onMouseEnter={() => !isEditing && openModal(entryId)}
       onMouseLeave={() => !isEditing && closeModal()}
+      // onClick={() => !isEditing && toggleIsEditing(entryId)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
           toggleIsEditing(entryId);
@@ -83,6 +83,7 @@ export default function Entry({
     >
       {modalState === entryId && (
         <Modal
+          key={entryId}
           entryId={entryId}
           isEditing={isEditing}
           toggleIsEditing={toggleIsEditing}

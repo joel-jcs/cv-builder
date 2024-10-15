@@ -24,7 +24,6 @@ export function Resume() {
   const toggleIsEditing = (entryId) => {
     if (isEditing === entryId) {
       stopEditing();
-      closeModal();
     } else {
       startEditing(entryId);
     }
@@ -60,25 +59,29 @@ export function Resume() {
   });
 
   function addEntry(sectionTitle) {
-    setEntries((prevEntries) => ({
-      ...prevEntries,
-      [sectionTitle]: [
-        ...prevEntries[sectionTitle],
-        { sectionTitle, entryId: generateEntryId() },
-      ],
-    }));
+    setEntries((prevEntries) => {
+      return {
+        ...prevEntries,
+        [sectionTitle]: [
+          ...prevEntries[sectionTitle],
+          {
+            sectionTitle: sectionTitle,
+            entryId: generateEntryId(),
+          },
+        ],
+      };
+    });
   }
 
   function deleteEntry(sectionTitle, entryId) {
-    console.log(sectionTitle, entryId);
-    setEntries((prevEntries) => ({
-      ...prevEntries,
-      [sectionTitle]: prevEntries[sectionTitle].filter((e) => {
-        console.log(e);
-        console.log(e.entryId !== entryId);
-        return e.entryId !== entryId;
-      }),
-    }));
+    setEntries((prevEntries) => {
+      return {
+        ...prevEntries,
+        [sectionTitle]: prevEntries[sectionTitle].filter((e) => {
+          return e.entryId !== entryId;
+        }),
+      };
+    });
   }
 
   return (
@@ -95,10 +98,10 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Experience"}</h2>
             <hr></hr>
-            {entries.Experience.map((entry, index) => {
+            {entries.Experience.map((entry) => {
               return (
                 <Entry
-                  key={index}
+                  key={entry.entryId}
                   {...entry}
                   modalState={modalState}
                   openModal={openModal}
@@ -115,10 +118,10 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Education"}</h2>
             <hr></hr>
-            {entries.Education.map((entry, index) => {
+            {entries.Education.map((entry) => {
               return (
                 <Entry
-                  key={index}
+                  key={entry.entryId}
                   {...entry}
                   modalState={modalState}
                   openModal={openModal}
@@ -135,10 +138,10 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Certifications"}</h2>
             <hr></hr>
-            {entries.Certifications.map((entry, index) => {
+            {entries.Certifications.map((entry) => {
               return (
                 <Entry
-                  key={index}
+                  key={entry.entryId}
                   {...entry}
                   modalState={modalState}
                   openModal={openModal}
@@ -155,10 +158,10 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Skills"}</h2>
             <hr></hr>
-            {entries.Skills.map((entry, index) => {
+            {entries.Skills.map((entry) => {
               return (
                 <Entry
-                  key={index}
+                  key={entry.entryId}
                   {...entry}
                   modalState={modalState}
                   openModal={openModal}
