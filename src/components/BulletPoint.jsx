@@ -1,4 +1,5 @@
 import "../styles/Input.css";
+import "../styles/BulletPoint.css";
 
 /* eslint-disable react/prop-types */
 export default function Bulletpoint({
@@ -14,14 +15,12 @@ export default function Bulletpoint({
   addBulletPoint,
   deleteBulletPoint,
 }) {
-  console.log(value);
-
-  const itemClassName =
+  const skillItem =
     sectionTitle === "Skills" ? "bulletPoint skill" : "bulletPoint";
 
   if (isEditing && isEditing === entryId) {
     return (
-      <li className={itemClassName}>
+      <li className={skillItem}>
         <div
           contentEditable="true"
           className={"input"}
@@ -75,7 +74,7 @@ export default function Bulletpoint({
     );
   } else {
     return (
-      <li className={itemClassName}>
+      <li className={skillItem}>
         <span type={type} className={value ? "input" : "placeholder"}>
           {value ? value : placeholder}
         </span>

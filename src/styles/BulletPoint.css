@@ -1,0 +1,54 @@
+.bulletPoint {
+  margin-left: 16px;
+  margin-top: 5px;
+  width: 98%;
+}
+
+.bulletPoint .input,
+.bulletPoint span {
+  width: 100%;
+  text-align: left;
+  display: block;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.bulletPoint .input {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: text;
+}
+
+.bulletPoint .input::after {
+  content: attr(placeholder);
+  opacity: 0.5;
+}
+
+.bulletPoint .input:not(:empty)::after {
+  content: "";
+}
+
+.skillsSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.skill {
+  width: auto;
+  max-width: 98%;
+}
+
+.skill .input,
+.skill span {
+  text-align: left;
+  display: block;
+  word-wrap: break-word;
+  white-space: normal;
+}
