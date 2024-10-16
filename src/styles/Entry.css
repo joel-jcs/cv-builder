@@ -76,8 +76,7 @@
   width: 98%;
 }
 
-.bulletPoint textarea,
-.bulletPoint input,
+.bulletPoint .input,
 .bulletPoint span {
   width: 100%;
   text-align: left;
@@ -86,22 +85,17 @@
   white-space: normal;
 }
 
-.bulletPoint textarea,
-.bulletPoint input {
+.bulletPoint .input {
   white-space: normal;
   word-wrap: break-word;
   word-break: break-all;
 }
 
-.bulletPoint input:focus {
-  border: 1px solid rgba(87, 87, 87, 0.5);
-  overflow: scroll;
-}
-
-.bulletPoint textarea {
+.bulletPoint .input {
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: text;
 }
 
 .skillsSection {
@@ -117,8 +111,7 @@
   max-width: 98%;
 }
 
-.skill textarea,
-.skill input,
+.skill .input,
 .skill span {
   text-align: left;
   display: block;

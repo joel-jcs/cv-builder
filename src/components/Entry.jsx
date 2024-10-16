@@ -71,9 +71,12 @@ export default function Entry({
       value: "",
     },
   ]);
+
   const changeBulletPoint = (e) => {
-    const { name, value } = e.target;
+    const div = e.target;
+    const name = div.getAttribute("name");
     const index = name.split("-")[1];
+    const value = div.innerText;
     const updatedBulletPoints = [...bulletPoints];
     updatedBulletPoints[index].value = value;
     setBulletPoints(updatedBulletPoints);
@@ -95,7 +98,7 @@ export default function Entry({
 
     // set timeout to wait for re-render before getting last bulletpoint
     setTimeout(() => {
-      const bulletPoints = parentNode.querySelectorAll("input");
+      const bulletPoints = parentNode.querySelectorAll(".input");
       const newBulletPoint = bulletPoints[newItemIndex];
       newBulletPoint.focus();
     }, 1);
@@ -112,7 +115,7 @@ export default function Entry({
 
     // set timeout to wait for re-render before getting last bulletpoint
     setTimeout(() => {
-      const bulletPoints = parentNode.querySelectorAll("input");
+      const bulletPoints = parentNode.querySelectorAll(".input");
       let nextBulletPoint;
       if (!bulletPoints[index]) {
         nextBulletPoint = bulletPoints[prevItemIndex];
