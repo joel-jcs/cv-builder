@@ -5,24 +5,34 @@ export default function Bulletpoint({
   bulletPointId,
   type = "text",
   name,
-  className,
   placeholder,
   value,
+  sectionTitle,
   changeBulletPoint,
   entryId,
   isEditing,
   addBulletPoint,
   deleteBulletPoint,
 }) {
+  const itemClassName =
+    sectionTitle === "Skills" ? "bulletPoint skill" : "bulletPoint";
+
   if (isEditing && isEditing === entryId) {
     return (
-      <li className="bulletPoint">
+      <li className={itemClassName}>
         <input
           type={type}
           name={name}
-          className={className}
           placeholder={placeholder}
           value={value}
+          style={
+            sectionTitle === "Skills"
+              ? value
+                ? { width: `${value.length * 0.5}em` }
+                : { width: `${placeholder.length - 3}ch` }
+              : undefined
+          }
+          maxLength={sectionTitle === "Skills" ? 80 : undefined}
           onChange={changeBulletPoint}
           onKeyDown={(e) => {
             const parentNode = e.target.parentNode.parentNode; //parentNode called twice because each bullet is nested in a li
@@ -67,11 +77,8 @@ export default function Bulletpoint({
     );
   } else {
     return (
-      <li className="bulletPoint">
-        <span
-          type={type}
-          className={value ? className : `${className} placeholder`}
-        >
+      <li className={itemClassName}>
+        <span type={type} className={value ? "" : "placeholder"}>
           {value ? value : placeholder}
         </span>
       </li>

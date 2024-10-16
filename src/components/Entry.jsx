@@ -32,7 +32,7 @@ export default function Entry({
     titlePlaceholder = "Company Name";
     subtitlePlaceholder = "Position Title";
     bulletPlaceholder =
-      "Add a responsibility or result here --- ['Enter' = add line | 'Backspace' = delete]";
+      "Write something, press 'Enter' to add line or 'Backspace' to delete...";
     hasEntry = true;
     hasBulletsSection = true;
   } else if (sectionTitle === "Education") {
@@ -48,8 +48,7 @@ export default function Entry({
   } else if (sectionTitle === "Skills") {
     hasEntry = false;
     hasBulletsSection = true;
-    bulletPlaceholder =
-      "Share your skills here --- ['Enter' = add line | 'Backspace' = delete]";
+    bulletPlaceholder = "Add skill...";
   }
 
   const [entryTitle, setTitle] = useState("");
@@ -88,7 +87,6 @@ export default function Entry({
         ...prevEntries.slice(0, newItemIndex),
         {
           bulletPointId: generateBulletPointId(),
-          // placeholder: "New bullet point...",
           value: "",
         },
         ...prevEntries.slice(newItemIndex),
@@ -197,7 +195,13 @@ export default function Entry({
         </div>
       )}
       {hasBulletsSection && (
-        <ul className="bulletSection">
+        <ul
+          className={
+            sectionTitle === "Skills"
+              ? "bulletSection skillsSection"
+              : "bulletSection"
+          }
+        >
           {bulletPoints.map((bullet, index) => (
             <BulletPoint
               key={bullet.bulletPointId}
@@ -205,6 +209,7 @@ export default function Entry({
               name={`bulletPoint-${index}`}
               placeholder={bulletPlaceholder}
               value={bullet.value}
+              sectionTitle={sectionTitle}
               changeBulletPoint={changeBulletPoint}
               isEditing={isEditing}
               entryId={entryId}

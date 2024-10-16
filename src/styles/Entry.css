@@ -76,8 +76,52 @@
   width: 98%;
 }
 
+.bulletPoint textarea,
 .bulletPoint input,
 .bulletPoint span {
   width: 100%;
+  text-align: left;
+  display: block;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.bulletPoint textarea,
+.bulletPoint input {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.bulletPoint input:focus {
+  border: 1px solid rgba(87, 87, 87, 0.5);
+  overflow: scroll;
+}
+
+.bulletPoint textarea {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.skillsSection {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.skill {
+  width: auto;
+  max-width: 98%;
+}
+
+.skill textarea,
+.skill input,
+.skill span {
+  text-align: left;
+  display: block;
+  word-wrap: break-word;
+  white-space: normal;
 }
