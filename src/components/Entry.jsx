@@ -10,7 +10,6 @@ export default function Entry({
   sectionTitle,
   entryId,
   entriesLength,
-  hasBulletsSection,
   modalState,
   openModal,
   closeModal,
@@ -33,20 +32,16 @@ export default function Entry({
     bulletPlaceholder =
       "Write something, press 'Enter' to add line or 'Backspace' to delete...";
     hasEntry = true;
-    hasBulletsSection = true;
   } else if (sectionTitle === "Education") {
     titlePlaceholder = "School or University";
     subtitlePlaceholder = "Degree and Field";
     hasEntry = true;
-    hasBulletsSection = false;
   } else if (sectionTitle === "Certifications") {
     titlePlaceholder = "Certification Title";
     subtitlePlaceholder = "Certification Provider";
     hasEntry = true;
-    hasBulletsSection = false;
   } else if (sectionTitle === "Skills") {
     hasEntry = false;
-    hasBulletsSection = true;
     bulletPlaceholder = "Add skill...";
   }
 
@@ -115,11 +110,10 @@ export default function Entry({
       );
     });
 
-    // prevents auto-focus if all bullet points have been deleted
-    if (parentNode.children.length === 1) return;
-
     // set timeout to wait for re-render before getting last bulletpoint
     setTimeout(() => {
+      if (prevItemIndex < 0) return; // prevents auto-focus if all bullet points have been deleted
+
       const bulletPoints = parentNode.querySelectorAll(".input");
       let nextBulletPoint;
       if (!bulletPoints[index]) {
@@ -127,8 +121,30 @@ export default function Entry({
       } else {
         nextBulletPoint = bulletPoints[index];
       }
-      nextBulletPoint.focus();
+
+      console.log(nextBulletPoint);
+
+      nextBulletPoint && nextBulletPoint.focus();
     }, 1);
+  }
+
+  const [hasBulletsSection, setHasBulletsSection] = useState(
+    sectionTitle === "Experience" || sectionTitle === "Skills"
+  );
+
+  function toggleBulletPoints() {
+    if (hasBulletsSection) {
+      setBulletPoints([]);
+      setHasBulletsSection(false);
+    } else {
+      setBulletPoints([
+        {
+          bulletPointId: generateBulletPointId(),
+          value: "",
+        },
+      ]);
+      setHasBulletsSection(true);
+    }
   }
 
   return (
@@ -154,6 +170,7 @@ export default function Entry({
           entriesLength={entriesLength}
           addEntry={addEntry}
           deleteEntry={deleteEntry}
+          toggleBulletPoints={toggleBulletPoints}
         />
       )}
       {hasEntry && (

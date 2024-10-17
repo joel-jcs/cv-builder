@@ -45,6 +45,7 @@ export default function Bulletpoint({
               (e.key === "Backspace" || e.key === "Delete") &&
               e.target.innerText === ""
             ) {
+              if (sectionTitle === "Skills" && index === 0) return;
               deleteBulletPoint(bulletPointId, parentNode, index);
             }
             if (e.key === "ArrowUp") {
