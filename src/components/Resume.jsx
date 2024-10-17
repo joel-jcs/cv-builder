@@ -168,31 +168,33 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Education"}</h2>
             <hr></hr>
-            {entries.Education.map((entry) => {
-              return (
-                <Entry
-                  key={entry.entryId}
-                  sectionTitle={entry.sectionTitle}
-                  entryId={entry.entryId}
-                  entriesLength={entries.Education.length}
-                  modalState={modalState}
-                  openModal={openModal}
-                  closeModal={closeModal}
-                  isEditing={isEditing}
-                  toggleIsEditing={toggleIsEditing}
-                  handleFieldClick={handleFieldClick}
-                  isMaxHeightReached={isMaxHeightReached}
-                  addEntry={addEntry}
-                  deleteEntry={deleteEntry}
-                />
-              );
-            })}
+            <div className="twoColumnSection">
+              {entries.Education.map((entry) => {
+                return (
+                  <Entry
+                    key={entry.entryId}
+                    sectionTitle={entry.sectionTitle}
+                    entryId={entry.entryId}
+                    entriesLength={entries.Education.length}
+                    modalState={modalState}
+                    openModal={openModal}
+                    closeModal={closeModal}
+                    isEditing={isEditing}
+                    toggleIsEditing={toggleIsEditing}
+                    handleFieldClick={handleFieldClick}
+                    isMaxHeightReached={isMaxHeightReached}
+                    addEntry={addEntry}
+                    deleteEntry={deleteEntry}
+                  />
+                );
+              })}
+            </div>
           </section>
 
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Certifications"}</h2>
             <hr></hr>
-            <div className="certificationsSection">
+            <div className="twoColumnSection">
               {entries.Certifications.map((entry) => {
                 return (
                   <Entry

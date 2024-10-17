@@ -16,7 +16,7 @@ export default function Modal({
     sectionTitle === "Experience"
       ? 5
       : sectionTitle === "Education"
-      ? 3
+      ? 4
       : sectionTitle === "Certifications"
       ? 6
       : 10;
