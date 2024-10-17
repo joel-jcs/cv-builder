@@ -72,6 +72,8 @@ export default function Entry({
   ]);
 
   const changeBulletPoint = (e) => {
+    if (isMaxHeightReached()) return;
+
     const div = e.target;
     const name = div.getAttribute("name");
     const index = name.split("-")[1];
@@ -112,6 +114,9 @@ export default function Entry({
         (entry) => entry.bulletPointId !== bulletPointId
       );
     });
+
+    // prevents auto-focus if all bullet points have been deleted
+    if (parentNode.children.length === 1) return;
 
     // set timeout to wait for re-render before getting last bulletpoint
     setTimeout(() => {

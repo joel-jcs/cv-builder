@@ -90,8 +90,8 @@ export function Resume() {
 
   const isMaxHeightReached = () => {
     const resumePage = document.querySelector(".resumePage");
-    const maxHeight = 1100;
-    const currentHeight = resumePage.scrollHeight;
+    const maxHeight = 1164.71;
+    const currentHeight = resumePage.scrollHeight + 20;
 
     let isMaxHeightReached = false;
     if (currentHeight >= maxHeight) {
@@ -168,7 +168,13 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Education"}</h2>
             <hr></hr>
-            <div className="twoColumnSection">
+            <div
+              className={
+                entries.Education.length === 1
+                  ? "oneColumnSection"
+                  : "twoColumnSection"
+              }
+            >
               {entries.Education.map((entry) => {
                 return (
                   <Entry
@@ -194,7 +200,13 @@ export function Resume() {
           <section className="resumeSection">
             <h2 className="sectionTitle">{"Certifications"}</h2>
             <hr></hr>
-            <div className="twoColumnSection">
+            <div
+              className={
+                entries.Certifications.length === 1
+                  ? "oneColumnSection"
+                  : "twoColumnSection"
+              }
+            >
               {entries.Certifications.map((entry) => {
                 return (
                   <Entry

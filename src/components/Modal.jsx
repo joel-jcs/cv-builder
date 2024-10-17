@@ -18,8 +18,8 @@ export default function Modal({
       : sectionTitle === "Education"
       ? 4
       : sectionTitle === "Certifications"
-      ? 6
-      : 10;
+      ? 4
+      : 1;
 
   return (
     <div className="modal">

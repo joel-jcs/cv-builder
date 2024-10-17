@@ -19,6 +19,9 @@ export default function Input({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        maxLength={
+          className === "location" || className === "datePeriod" ? 35 : 60
+        }
       />
     );
   } else {
