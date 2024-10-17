@@ -5,12 +5,16 @@ input {
   padding: 2.5px 0;
 }
 
-input:focus::placeholder {
-  opacity: 0.4;
+input::placeholder {
+  opacity: 0.7;
 }
 
 span {
   opacity: 1;
+}
+
+span:hover {
+  cursor: text;
 }
 
 .placeholder {

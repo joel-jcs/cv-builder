@@ -29,6 +29,36 @@ export function Resume() {
     }
   };
 
+  const handleFieldClick = (e, entryId) => {
+    let elParent;
+    let index;
+    if (
+      e.target.parentNode.parentNode.className === "entryHeader" ||
+      e.target.parentNode.parentNode.className === "resumePage" ||
+      e.target.parentNode.className === "contactDetails"
+    ) {
+      elParent = e.target.parentNode;
+      index = Array.prototype.indexOf.call(elParent.children, e.target);
+    } else {
+      elParent = e.target.parentNode.parentNode;
+      index = Array.prototype.indexOf.call(
+        elParent.children,
+        e.target.parentNode
+      );
+    }
+
+    !isEditing && toggleIsEditing(entryId);
+    setTimeout(() => {
+      const focusItem =
+        elParent.parentNode.className === "entryHeader" ||
+        elParent.parentNode.className === "resumePage" ||
+        elParent.className === "contactDetails"
+          ? elParent.children[index]
+          : elParent.children[index].querySelector(".input");
+      focusItem.focus();
+    }, 1);
+  };
+
   const generateEntryId = () => crypto.randomUUID();
 
   const [entries, setEntries] = useState({
@@ -93,6 +123,7 @@ export function Resume() {
           closeModal={closeModal}
           isEditing={isEditing}
           toggleIsEditing={toggleIsEditing}
+          handleFieldClick={handleFieldClick}
         />
         <main>
           <section className="resumeSection">
@@ -110,6 +141,7 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  handleFieldClick={handleFieldClick}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />
@@ -132,6 +164,7 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  handleFieldClick={handleFieldClick}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />
@@ -154,6 +187,7 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  handleFieldClick={handleFieldClick}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />
@@ -176,6 +210,7 @@ export function Resume() {
                   closeModal={closeModal}
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
+                  handleFieldClick={handleFieldClick}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />

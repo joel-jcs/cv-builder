@@ -12,6 +12,7 @@ export default function Bulletpoint({
   changeBulletPoint,
   entryId,
   isEditing,
+  handleFieldClick,
   addBulletPoint,
   deleteBulletPoint,
 }) {
@@ -23,6 +24,7 @@ export default function Bulletpoint({
       <li className={skillItem}>
         <div
           contentEditable="true"
+          suppressContentEditableWarning={true} // remove on prod
           className={"input"}
           type={type}
           name={name}
@@ -36,6 +38,7 @@ export default function Bulletpoint({
               e.target.parentNode
             );
             if (e.key === "Enter") {
+              e.preventDefault();
               addBulletPoint(parentNode, index);
             }
             if (
@@ -75,7 +78,11 @@ export default function Bulletpoint({
   } else {
     return (
       <li className={skillItem}>
-        <span type={type} className={value ? "input" : "placeholder"}>
+        <span
+          type={type}
+          className={value ? "input" : "placeholder"}
+          onClick={(e) => handleFieldClick(e, entryId)}
+        >
           {value ? value : placeholder}
         </span>
       </li>

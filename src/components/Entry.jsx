@@ -16,6 +16,7 @@ export default function Entry({
   closeModal,
   isEditing,
   toggleIsEditing,
+  handleFieldClick,
   addEntry,
   deleteEntry,
 }) {
@@ -25,9 +26,6 @@ export default function Entry({
   let subtitlePlaceholder = "";
   let bulletPlaceholder = "";
 
-  // can add a condition for Skills section.
-  // if it's skills, I can change the className of the ul/li/bulletpoint at the bottom,
-  // so that each skill shows as horizontal bullet point rather than vertically
   if (sectionTitle === "Experience") {
     titlePlaceholder = "Company Name";
     subtitlePlaceholder = "Position Title";
@@ -131,8 +129,6 @@ export default function Entry({
       className="entry"
       onMouseEnter={() => !isEditing && openModal(entryId)}
       onMouseLeave={() => !isEditing && closeModal()}
-      // to-do: add editing on click
-      // onClick={() => !isEditing && toggleIsEditing(entryId)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
           toggleIsEditing(entryId);
@@ -143,6 +139,7 @@ export default function Entry({
       {modalState === entryId && (
         <Modal
           key={entryId}
+          suppressHydrationWarning={true} // remove on prod
           entryId={entryId}
           isEditing={isEditing}
           toggleIsEditing={toggleIsEditing}
@@ -163,6 +160,7 @@ export default function Entry({
               isEditing={isEditing}
               entryId={entryId}
               toggleIsEditing={toggleIsEditing}
+              handleFieldClick={handleFieldClick}
             />
             <Input
               className="entrySubtitle"
@@ -172,6 +170,7 @@ export default function Entry({
               isEditing={isEditing}
               entryId={entryId}
               toggleIsEditing={toggleIsEditing}
+              handleFieldClick={handleFieldClick}
             />
           </div>
 
@@ -184,6 +183,7 @@ export default function Entry({
               isEditing={isEditing}
               entryId={entryId}
               toggleIsEditing={toggleIsEditing}
+              handleFieldClick={handleFieldClick}
             />
             <Input
               className="datePeriod"
@@ -193,6 +193,7 @@ export default function Entry({
               isEditing={isEditing}
               entryId={entryId}
               toggleIsEditing={toggleIsEditing}
+              handleFieldClick={handleFieldClick}
             />
           </div>
         </div>
@@ -217,6 +218,7 @@ export default function Entry({
               isEditing={isEditing}
               entryId={entryId}
               toggleIsEditing={toggleIsEditing}
+              handleFieldClick={handleFieldClick}
               addBulletPoint={addBulletPoint}
               deleteBulletPoint={deleteBulletPoint}
             />

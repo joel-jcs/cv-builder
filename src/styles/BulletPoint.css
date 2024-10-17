@@ -25,7 +25,7 @@
 
 .bulletPoint .input::after {
   content: attr(placeholder);
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .bulletPoint .input:not(:empty)::after {

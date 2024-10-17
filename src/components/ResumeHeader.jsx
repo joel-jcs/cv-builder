@@ -10,6 +10,7 @@ export default function ResumeHeader({
   closeModal,
   isEditing,
   toggleIsEditing,
+  handleFieldClick,
 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,12 +19,12 @@ export default function ResumeHeader({
   const [location, setLocation] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "name") setName(value);
-    if (name === "email") setEmail(value);
-    if (name === "phone") setPhone(value);
-    if (name === "link") setLink(value);
-    if (name === "location") setLocation(value);
+    const { className, value } = e.target;
+    if (className === "name") setName(value);
+    if (className === "email") setEmail(value);
+    if (className === "phone") setPhone(value);
+    if (className === "link") setLink(value);
+    if (className === "location") setLocation(value);
   };
 
   const defaultName = "John Smith";
@@ -56,7 +57,6 @@ export default function ResumeHeader({
       )}
       <Input
         type={"text"}
-        name={"name"}
         className={"name"}
         placeholder={defaultName}
         value={name}
@@ -64,47 +64,52 @@ export default function ResumeHeader({
         isEditing={isEditing}
         entryId={id}
         toggleIsEditing={toggleIsEditing}
+        handleFieldClick={handleFieldClick}
       />
       <div className="contactDetails">
         <Input
           type={"email"}
-          name={"email"}
+          className={"email"}
           placeholder={defaultEmail}
           value={email}
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
           toggleIsEditing={toggleIsEditing}
+          handleFieldClick={handleFieldClick}
         />
         <Input
           type={"tel"}
-          name={"phone"}
+          className={"phone"}
           placeholder={defaultPhone}
           value={phone}
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
           toggleIsEditing={toggleIsEditing}
+          handleFieldClick={handleFieldClick}
         />
         <Input
           type={"url"}
-          name={"link"}
+          className={"link"}
           placeholder={defaultLink}
           value={link}
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
           toggleIsEditing={toggleIsEditing}
+          handleFieldClick={handleFieldClick}
         />
         <Input
           type={"text"}
-          name={"location"}
+          className={"location"}
           placeholder={defaultLocation}
           value={location}
           onChange={handleChange}
           isEditing={isEditing}
           entryId={id}
           toggleIsEditing={toggleIsEditing}
+          handleFieldClick={handleFieldClick}
         />
       </div>
     </header>

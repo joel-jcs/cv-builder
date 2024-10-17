@@ -3,19 +3,18 @@ import "../styles/Input.css";
 /* eslint-disable react/prop-types */
 export default function Input({
   type = "text",
-  name,
   className,
   placeholder,
   value,
   onChange,
   entryId,
   isEditing,
+  handleFieldClick,
 }) {
   if (isEditing && isEditing === entryId) {
     return (
       <input
         type={type}
-        name={name}
         className={className}
         placeholder={placeholder}
         value={value}
@@ -27,6 +26,7 @@ export default function Input({
       <span
         type={type}
         className={value ? className : `${className} placeholder`}
+        onClick={(e) => handleFieldClick(e, entryId)}
       >
         {value ? value : placeholder}
       </span>
