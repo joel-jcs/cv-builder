@@ -6,16 +6,19 @@
   transition: ease 0.1s;
 }
 
-.resumePage {
-  font-family: "Inter", sans-serif;
+.resumeContainer {
   width: 900px;
   height: 1164.71px;
+  background-color: #181a1b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 100px;
+}
+
+.resumePage {
+  font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: column;
-  background-color: #181a1b;
-  border: 1px solid #111111;
-  padding: 20px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
 }
 
 section {

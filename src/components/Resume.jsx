@@ -88,7 +88,22 @@ export function Resume() {
     ],
   });
 
+  const isMaxHeightReached = () => {
+    const resumePage = document.querySelector(".resumePage");
+    const maxHeight = 1100;
+    const currentHeight = resumePage.scrollHeight;
+
+    let isMaxHeightReached = false;
+    if (currentHeight >= maxHeight) {
+      return (isMaxHeightReached = true);
+    }
+
+    return isMaxHeightReached;
+  };
+
   function addEntry(sectionTitle) {
+    if (isMaxHeightReached()) return;
+
     setEntries((prevEntries) => {
       return {
         ...prevEntries,
@@ -115,7 +130,7 @@ export function Resume() {
   }
 
   return (
-    <>
+    <div className="resumeContainer">
       <div className="resumePage">
         <Header
           modalState={modalState}
@@ -219,6 +234,6 @@ export function Resume() {
           </section>
         </main>
       </div>
-    </>
+    </div>
   );
 }
