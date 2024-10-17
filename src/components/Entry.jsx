@@ -17,6 +17,7 @@ export default function Entry({
   isEditing,
   toggleIsEditing,
   handleFieldClick,
+  isMaxHeightReached,
   addEntry,
   deleteEntry,
 }) {
@@ -81,6 +82,7 @@ export default function Entry({
   };
 
   function addBulletPoint(parentNode, index) {
+    if (isMaxHeightReached()) return;
     const newItemIndex = index + 1;
 
     setBulletPoints((prevEntries) => {

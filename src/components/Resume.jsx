@@ -157,6 +157,7 @@ export function Resume() {
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
                   handleFieldClick={handleFieldClick}
+                  isMaxHeightReached={isMaxHeightReached}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />
@@ -180,6 +181,7 @@ export function Resume() {
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
                   handleFieldClick={handleFieldClick}
+                  isMaxHeightReached={isMaxHeightReached}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />
@@ -203,6 +205,7 @@ export function Resume() {
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
                   handleFieldClick={handleFieldClick}
+                  isMaxHeightReached={isMaxHeightReached}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />
@@ -226,6 +229,7 @@ export function Resume() {
                   isEditing={isEditing}
                   toggleIsEditing={toggleIsEditing}
                   handleFieldClick={handleFieldClick}
+                  isMaxHeightReached={isMaxHeightReached}
                   addEntry={addEntry}
                   deleteEntry={deleteEntry}
                 />
