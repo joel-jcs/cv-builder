@@ -40,6 +40,12 @@ hr {
   width: 100%;
 }
 
+.regularSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .oneColumnSection {
   width: 100%;
   display: flex;

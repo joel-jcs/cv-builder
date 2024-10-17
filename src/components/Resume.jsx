@@ -1,6 +1,6 @@
 import "../styles/Resume.css";
 import Header from "./ResumeHeader";
-import Entry from "./Entry";
+import Section from "./Section";
 import { useState } from "react";
 
 export function Resume() {
@@ -21,6 +21,7 @@ export function Resume() {
   function stopEditing() {
     setIsEditing(null);
   }
+
   const toggleIsEditing = (entryId) => {
     if (isEditing === entryId) {
       stopEditing();
@@ -59,76 +60,6 @@ export function Resume() {
     }, 1);
   };
 
-  const generateEntryId = () => crypto.randomUUID();
-
-  const [entries, setEntries] = useState({
-    Experience: [
-      {
-        sectionTitle: "Experience",
-        entryId: generateEntryId(),
-      },
-    ],
-    Education: [
-      {
-        sectionTitle: "Education",
-        entryId: generateEntryId(),
-      },
-    ],
-    Certifications: [
-      {
-        sectionTitle: "Certifications",
-        entryId: generateEntryId(),
-      },
-    ],
-    Skills: [
-      {
-        sectionTitle: "Skills",
-        entryId: generateEntryId(),
-      },
-    ],
-  });
-
-  const isMaxHeightReached = () => {
-    const resumePage = document.querySelector(".resumePage");
-    const maxHeight = 1164.71;
-    const currentHeight = resumePage.scrollHeight + 20;
-
-    let isMaxHeightReached = false;
-    if (currentHeight >= maxHeight) {
-      return (isMaxHeightReached = true);
-    }
-
-    return isMaxHeightReached;
-  };
-
-  function addEntry(sectionTitle) {
-    if (isMaxHeightReached()) return;
-
-    setEntries((prevEntries) => {
-      return {
-        ...prevEntries,
-        [sectionTitle]: [
-          ...prevEntries[sectionTitle],
-          {
-            sectionTitle: sectionTitle,
-            entryId: generateEntryId(),
-          },
-        ],
-      };
-    });
-  }
-
-  function deleteEntry(sectionTitle, entryId) {
-    setEntries((prevEntries) => {
-      return {
-        ...prevEntries,
-        [sectionTitle]: prevEntries[sectionTitle].filter((e) => {
-          return e.entryId !== entryId;
-        }),
-      };
-    });
-  }
-
   return (
     <div className="resumeContainer">
       <div className="resumePage">
@@ -141,117 +72,45 @@ export function Resume() {
           handleFieldClick={handleFieldClick}
         />
         <main>
-          <section className="resumeSection">
-            <h2 className="sectionTitle">{"Experience"}</h2>
-            <hr></hr>
-            {entries.Experience.map((entry) => {
-              return (
-                <Entry
-                  key={entry.entryId}
-                  sectionTitle={entry.sectionTitle}
-                  entryId={entry.entryId}
-                  entriesLength={entries.Experience.length}
-                  modalState={modalState}
-                  openModal={openModal}
-                  closeModal={closeModal}
-                  isEditing={isEditing}
-                  toggleIsEditing={toggleIsEditing}
-                  handleFieldClick={handleFieldClick}
-                  isMaxHeightReached={isMaxHeightReached}
-                  addEntry={addEntry}
-                  deleteEntry={deleteEntry}
-                />
-              );
-            })}
-          </section>
+          <Section
+            sectionName={"Experience"}
+            modalState={modalState}
+            openModal={openModal}
+            closeModal={closeModal}
+            isEditing={isEditing}
+            toggleIsEditing={toggleIsEditing}
+            handleFieldClick={handleFieldClick}
+          />
 
-          <section className="resumeSection">
-            <h2 className="sectionTitle">{"Education"}</h2>
-            <hr></hr>
-            <div
-              className={
-                entries.Education.length === 1
-                  ? "oneColumnSection"
-                  : "twoColumnSection"
-              }
-            >
-              {entries.Education.map((entry) => {
-                return (
-                  <Entry
-                    key={entry.entryId}
-                    sectionTitle={entry.sectionTitle}
-                    entryId={entry.entryId}
-                    entriesLength={entries.Education.length}
-                    modalState={modalState}
-                    openModal={openModal}
-                    closeModal={closeModal}
-                    isEditing={isEditing}
-                    toggleIsEditing={toggleIsEditing}
-                    handleFieldClick={handleFieldClick}
-                    isMaxHeightReached={isMaxHeightReached}
-                    addEntry={addEntry}
-                    deleteEntry={deleteEntry}
-                  />
-                );
-              })}
-            </div>
-          </section>
+          <Section
+            sectionName={"Education"}
+            modalState={modalState}
+            openModal={openModal}
+            closeModal={closeModal}
+            isEditing={isEditing}
+            toggleIsEditing={toggleIsEditing}
+            handleFieldClick={handleFieldClick}
+          />
 
-          <section className="resumeSection">
-            <h2 className="sectionTitle">{"Certifications"}</h2>
-            <hr></hr>
-            <div
-              className={
-                entries.Certifications.length === 1
-                  ? "oneColumnSection"
-                  : "twoColumnSection"
-              }
-            >
-              {entries.Certifications.map((entry) => {
-                return (
-                  <Entry
-                    key={entry.entryId}
-                    sectionTitle={entry.sectionTitle}
-                    entryId={entry.entryId}
-                    entriesLength={entries.Certifications.length}
-                    modalState={modalState}
-                    openModal={openModal}
-                    closeModal={closeModal}
-                    isEditing={isEditing}
-                    toggleIsEditing={toggleIsEditing}
-                    handleFieldClick={handleFieldClick}
-                    isMaxHeightReached={isMaxHeightReached}
-                    addEntry={addEntry}
-                    deleteEntry={deleteEntry}
-                  />
-                );
-              })}
-            </div>
-          </section>
+          <Section
+            sectionName={"Certifications"}
+            modalState={modalState}
+            openModal={openModal}
+            closeModal={closeModal}
+            isEditing={isEditing}
+            toggleIsEditing={toggleIsEditing}
+            handleFieldClick={handleFieldClick}
+          />
 
-          <section className="resumeSection">
-            <h2 className="sectionTitle">{"Skills"}</h2>
-            <hr></hr>
-            {entries.Skills.map((entry) => {
-              return (
-                <Entry
-                  key={entry.entryId}
-                  sectionTitle={entry.sectionTitle}
-                  entryId={entry.entryId}
-                  entriesLength={entries.Skills.length}
-                  modalState={modalState}
-                  openModal={openModal}
-                  closeModal={closeModal}
-                  isEditing={isEditing}
-                  toggleIsEditing={toggleIsEditing}
-                  handleFieldClick={handleFieldClick}
-                  isMaxHeightReached={isMaxHeightReached}
-                  addEntry={addEntry}
-                  deleteEntry={deleteEntry}
-                />
-              );
-            })}
-          </section>
+          <Section
+            sectionName={"Skills"}
+            modalState={modalState}
+            openModal={openModal}
+            closeModal={closeModal}
+            isEditing={isEditing}
+            toggleIsEditing={toggleIsEditing}
+            handleFieldClick={handleFieldClick}
+          />
         </main>
       </div>
     </div>
