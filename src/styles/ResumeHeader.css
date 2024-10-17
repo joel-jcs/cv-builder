@@ -39,6 +39,7 @@ header:focus-within {
   text-align: center;
   max-width: 15ch;
   border-right: 2px solid white;
+  border-radius: 0 !important;
 }
 
 .contactDetails input[type="email"],
@@ -54,8 +55,10 @@ header:focus-within {
   text-align: center;
   border-right: 2px solid white;
   padding: 0 20px;
+  border-radius: 0 !important;
 }
 
 .contactDetails span:first-child {
   border-left: 2px solid white;
+  border-radius: !important;
 }

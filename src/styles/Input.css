@@ -2,7 +2,8 @@ input {
   border: none;
   outline: none;
   background-color: transparent;
-  padding: 2.5px 0;
+  /* padding: 2.5px 0; */
+  padding: 3px 5px;
 }
 
 input::placeholder {
@@ -11,12 +12,20 @@ input::placeholder {
 
 span {
   opacity: 1;
-}
-
-span:hover {
   cursor: text;
 }
 
 .placeholder {
   opacity: 0.5;
+}
+
+span:hover,
+input:focus {
+  background-color: rgb(24, 24, 24);
+  border-radius: 0.5rem;
+  padding: 3px 5px;
+}
+
+input:focus {
+  /* transition: padding none; */
 }
