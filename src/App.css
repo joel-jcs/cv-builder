@@ -8,3 +8,23 @@
 h1 {
   margin-bottom: 40px;
 }
+
+footer {
+  height: 40px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+}
+
+footer svg {
+  width: 30px;
+  display: flex;
+  fill: white;
+  cursor: pointer;
+}
