@@ -29,6 +29,10 @@ header:focus-within {
   text-align: center;
 }
 
+header > span:hover {
+  padding: initial;
+}
+
 .contactDetails {
   display: flex;
   justify-content: center;
@@ -54,11 +58,10 @@ header:focus-within {
 .contactDetails span {
   text-align: center;
   border-right: 2px solid white;
-  padding: 0 20px;
+  padding: 0 20px !important;
   border-radius: 0 !important;
 }
 
 .contactDetails span:first-child {
   border-left: 2px solid white;
-  border-radius: !important;
 }
