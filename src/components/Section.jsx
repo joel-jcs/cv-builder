@@ -54,7 +54,9 @@ export default function Section({
   };
 
   function addEntry(sectionTitle) {
-    if (isMaxHeightReached()) return;
+    if (isMaxHeightReached())
+      // to-do: change to a temporary modal.
+      return alert("You've reached the maximum height of your resume!");
 
     setEntries((prevEntries) => {
       return {

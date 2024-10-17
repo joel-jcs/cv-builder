@@ -15,6 +15,7 @@ export default function Bulletpoint({
   handleFieldClick,
   addBulletPoint,
   deleteBulletPoint,
+  toggleBulletPoints,
 }) {
   const skillItem =
     sectionTitle === "Skills" ? "bulletPoint skill" : "bulletPoint";

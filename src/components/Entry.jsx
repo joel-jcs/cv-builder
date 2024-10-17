@@ -36,10 +36,12 @@ export default function Entry({
     titlePlaceholder = "School or University";
     subtitlePlaceholder = "Degree and Field";
     hasEntry = true;
+    bulletPlaceholder = "Add more details...";
   } else if (sectionTitle === "Certifications") {
     titlePlaceholder = "Certification Title";
     subtitlePlaceholder = "Certification Provider";
     hasEntry = true;
+    bulletPlaceholder = "Add more details...";
   } else if (sectionTitle === "Skills") {
     hasEntry = false;
     bulletPlaceholder = "Add skill...";
@@ -67,7 +69,9 @@ export default function Entry({
   ]);
 
   const changeBulletPoint = (e) => {
-    if (isMaxHeightReached()) return;
+    if (isMaxHeightReached())
+      // to-do: change to a temporary modal.
+      return alert("You've reached the maximum height of your resume!");
 
     const div = e.target;
     const name = div.getAttribute("name");
@@ -102,6 +106,9 @@ export default function Entry({
   }
 
   function deleteBulletPoint(bulletPointId, parentNode, index) {
+    // prevents deletion if only 1 bullet point remains
+    if (parentNode.children.length === 1) return;
+
     let prevItemIndex = index - 1;
 
     setBulletPoints((prevEntries) => {
@@ -112,8 +119,6 @@ export default function Entry({
 
     // set timeout to wait for re-render before getting last bulletpoint
     setTimeout(() => {
-      if (prevItemIndex < 0) return; // prevents auto-focus if all bullet points have been deleted
-
       const bulletPoints = parentNode.querySelectorAll(".input");
       let nextBulletPoint;
       if (!bulletPoints[index]) {
@@ -151,6 +156,7 @@ export default function Entry({
     <div
       className="entry"
       onMouseEnter={() => !isEditing && openModal(entryId)}
+      onFocus={() => openModal(entryId)}
       onMouseLeave={() => !isEditing && closeModal()}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) {
