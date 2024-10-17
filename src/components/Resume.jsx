@@ -1,4 +1,5 @@
 import "../styles/Resume.css";
+import Sidebar from "./Sidebar";
 import Header from "./ResumeHeader";
 import Section from "./Section";
 import { useState } from "react";
@@ -60,20 +61,55 @@ export function Resume() {
     }, 1);
   };
 
+  const generateSectionId = () => crypto.randomUUID();
+
+  const [sections, setSections] = useState([
+    {
+      name: "Experience",
+      id: generateSectionId(),
+    },
+    {
+      name: "Education",
+      id: generateSectionId(),
+    },
+    {
+      name: "Certifications",
+      id: generateSectionId(),
+    },
+    {
+      name: "Skills",
+      id: generateSectionId(),
+    },
+  ]);
+
+  function addSection(sectionName) {
+    setSections((prevSections) => {
+      return [
+        ...prevSections,
+        {
+          name: sectionName,
+          id: generateSectionId(),
+        },
+      ];
+    });
+  }
+
+  function deleteSection(sectionName) {
+    setSections((prevSections) => {
+      return prevSections.filter((section) => section.name !== sectionName);
+    });
+  }
+
   return (
-    <div className="resumeContainer">
-      <div className="resumePage">
-        <Header
-          modalState={modalState}
-          openModal={openModal}
-          closeModal={closeModal}
-          isEditing={isEditing}
-          toggleIsEditing={toggleIsEditing}
-          handleFieldClick={handleFieldClick}
-        />
-        <main>
-          <Section
-            sectionName={"Experience"}
+    <div className="contentWrapper">
+      <Sidebar
+        sections={sections}
+        addSection={addSection}
+        deleteSection={deleteSection}
+      />
+      <div className="resumeContainer">
+        <div className="resumePage">
+          <Header
             modalState={modalState}
             openModal={openModal}
             closeModal={closeModal}
@@ -81,37 +117,21 @@ export function Resume() {
             toggleIsEditing={toggleIsEditing}
             handleFieldClick={handleFieldClick}
           />
-
-          <Section
-            sectionName={"Education"}
-            modalState={modalState}
-            openModal={openModal}
-            closeModal={closeModal}
-            isEditing={isEditing}
-            toggleIsEditing={toggleIsEditing}
-            handleFieldClick={handleFieldClick}
-          />
-
-          <Section
-            sectionName={"Certifications"}
-            modalState={modalState}
-            openModal={openModal}
-            closeModal={closeModal}
-            isEditing={isEditing}
-            toggleIsEditing={toggleIsEditing}
-            handleFieldClick={handleFieldClick}
-          />
-
-          <Section
-            sectionName={"Skills"}
-            modalState={modalState}
-            openModal={openModal}
-            closeModal={closeModal}
-            isEditing={isEditing}
-            toggleIsEditing={toggleIsEditing}
-            handleFieldClick={handleFieldClick}
-          />
-        </main>
+          <main>
+            {sections.map((section) => (
+              <Section
+                key={section.id}
+                sectionName={section.name}
+                modalState={modalState}
+                openModal={openModal}
+                closeModal={closeModal}
+                isEditing={isEditing}
+                toggleIsEditing={toggleIsEditing}
+                handleFieldClick={handleFieldClick}
+              />
+            ))}
+          </main>
+        </div>
       </div>
     </div>
   );

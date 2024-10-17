@@ -6,6 +6,11 @@
   transition: ease 0.1s;
 }
 
+.contentWrapper {
+  display: flex;
+  position: relative;
+}
+
 .resumeContainer {
   width: 900px;
   height: 1164.71px;

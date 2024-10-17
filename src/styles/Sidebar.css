@@ -1,0 +1,31 @@
+.sidebar {
+  position: fixed;
+  top: 30%;
+  left: 25%;
+  background-color: rgb(112, 73, 163);
+  padding: 10px 20px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 240px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2rem;
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.sidebar button svg {
+  fill: white;
+  width: 30px;
+}
